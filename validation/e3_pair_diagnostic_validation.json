@@ -1,0 +1,25 @@
+{
+  "schema": "acie.e3-pair-diagnostic-validation.v1",
+  "status": "passed",
+  "files_checked": 40,
+  "directions": [
+    "HUI360_to_SSUP-A",
+    "SSUP-A_to_HUI360"
+  ],
+  "methods": [
+    "geometry",
+    "dual_no_pair",
+    "weighted_no_pair",
+    "full_selected"
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "input_manifest_digest": "6377dac395646c9486457976afa4e5e28bd19db88a0f087bb6c16fd636cc0133",
+  "frozen_protocol_digest": "5ac673f1cbb294a0b2ec56171acd506de32819d21e628cc5e51a2c92cddf0768",
+  "retraining_performed": false
+}

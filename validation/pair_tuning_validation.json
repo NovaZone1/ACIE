@@ -1,0 +1,41 @@
+{
+  "schema": "acie.pair-tuning-validation.v1",
+  "status": "passed",
+  "protocol": "source validation only",
+  "test_evaluated": false,
+  "domains": [
+    "HUI360",
+    "SSUP-A"
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "scans": {
+    "pair_lambda": {
+      "trials": 50,
+      "unique_trials": 50,
+      "expected_trials": 50,
+      "models": 50,
+      "validation_metrics": 50,
+      "test_named_files": [],
+      "all_trial_test_flags_false": true,
+      "summary_test_flag_false": true,
+      "grid_complete": true
+    },
+    "matching_radius": {
+      "trials": 50,
+      "unique_trials": 50,
+      "expected_trials": 50,
+      "models": 50,
+      "validation_metrics": 50,
+      "test_named_files": [],
+      "all_trial_test_flags_false": true,
+      "summary_test_flag_false": true,
+      "grid_complete": true
+    }
+  }
+}

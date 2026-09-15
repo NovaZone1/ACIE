@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-13",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "packages": {
+    "numpy": "2.3.5",
+    "torch": "2.10.0+cpu",
+    "scikit-learn": "1.8.0",
+    "PyYAML": "6.0.3",
+    "pytest": "9.0.2",
+    "pandas": "2.2.3",
+    "opencv-python-headless": "4.13.0.92",
+    "requests": "2.32.5",
+    "Pillow": "12.3.0",
+    "transformers": null,
+    "huggingface-hub": "1.16.1",
+    "setuptools": "82.0.1"
+  },
+  "device": "CPU",
+  "cuda_available": false,
+  "tests_passed": 41,
+  "tests_failed": 0,
+  "editable_install_verified": true,
+  "import_outside_repository_verified": true,
+  "syntax_compile_verified": true,
+  "installation_scope": "Editable installation with existing dependencies; --no-deps --no-build-isolation. Fresh network dependency resolution not executed.",
+  "real_benchmark_run": false,
+  "pretrained_weights_bundled": false,
+  "third_party_data_bundled": false,
+  "synthetic_demo_verified": true
+}

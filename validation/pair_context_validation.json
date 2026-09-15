@@ -1,0 +1,23 @@
+{
+  "schema": "acie.pair-context-validation.v1",
+  "status": "passed",
+  "protocol": "source validation only",
+  "test_evaluated": false,
+  "audit_test_flag_false": true,
+  "trial_rows": 30,
+  "unique_trials": 30,
+  "expected_trials": 30,
+  "grid_complete": true,
+  "reused_baselines": 10,
+  "new_models": 20,
+  "new_validation_metrics": 20,
+  "pairs_policy_checked": 2974,
+  "policy_violations": [],
+  "test_named_files": [],
+  "all_trial_test_flags_false": true,
+  "summary_test_flag_false": true,
+  "joint_selection": {
+    "context_policy": "any",
+    "mean_domain_delta_from_any": 0.0
+  }
+}

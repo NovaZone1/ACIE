@@ -1,0 +1,2470 @@
+{
+  "schema": "acie.horizon-evaluation-validation.v1",
+  "passed": 492,
+  "total": 492,
+  "all_passed": true,
+  "prediction_files": 100,
+  "max_base_score_difference": 6.51925802230835e-09,
+  "checks": [
+    {
+      "name": "protocol digest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "summary digest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "summary/protocol linkage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen target policy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "methods and seeds",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base features exact SSUP-A",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": 0.0
+    },
+    {
+      "name": "bundle hash SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash HUI360_to_SSUP-A/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage HUI360_to_SSUP-A/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen HUI360_to_SSUP-A/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels HUI360_to_SSUP-A/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "common count HUI360_to_SSUP-A",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nested horizon coverage HUI360_to_SSUP-A",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point HUI360_to_SSUP-A/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point HUI360_to_SSUP-A/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point HUI360_to_SSUP-A/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point HUI360_to_SSUP-A/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point HUI360_to_SSUP-A/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base features exact HUI360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": 9.313225746154785e-10
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": 2.3283064365386963e-09
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": 1.862645149230957e-09
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": 1.6298145055770874e-09
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": 6.402842700481415e-10
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/11/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": 6.51925802230835e-09
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/22/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": 5.587935447692871e-09
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/33/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": 9.313225746154785e-10
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/44/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": 3.694822225952521e-13
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/55/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base score reproduction SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": 2.9103830456733704e-10
+    },
+    {
+      "name": "bundle hash HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/11/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/22/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/33/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/44/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/55/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/11/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/22/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/33/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/44/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/55/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/11/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/22/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/33/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/44/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/55/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle hash HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bundle counts HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unique ids HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metadata shift HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "labels unchanged HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/geometry/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/geometry/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/11/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/22/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/33",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/33/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/44",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/44/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "checkpoint hash SSUP-A_to_HUI360/dual_no_pair/55",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction coverage SSUP-A_to_HUI360/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "threshold frozen SSUP-A_to_HUI360/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction labels SSUP-A_to_HUI360/dual_no_pair/55/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "common count SSUP-A_to_HUI360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nested horizon coverage SSUP-A_to_HUI360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point SSUP-A_to_HUI360/16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point SSUP-A_to_HUI360/24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point SSUP-A_to_HUI360/32",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point SSUP-A_to_HUI360/40",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "positive AP point SSUP-A_to_HUI360/48",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prediction file count",
+      "passed": true,
+      "detail": 100
+    }
+  ]
+}

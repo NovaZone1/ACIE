@@ -1,0 +1,159 @@
+{
+  "schema": "acie.frozen-cross-domain-validation.v1",
+  "date": "2026-09-14",
+  "status": "passed",
+  "runs_expected": 40,
+  "runs_validated": 40,
+  "data_sha256": "8c4b37afbfef94a84d80a3b6b166582a67e30da64083bde578bea4234296070c",
+  "frozen_protocol_digest": "5ac673f1cbb294a0b2ec56171acd506de32819d21e628cc5e51a2c92cddf0768",
+  "preregistered_sha256": "6869c558bd9b967cd05569a2954259cb6a1601ae9b12b75e6dd32657906288a8",
+  "checks": {
+    "config_hashes_match_preregistration": true,
+    "split_hashes_match_frozen_lock": true,
+    "train_val_test_group_disjoint": true,
+    "source_development_uses_train_pool_only": true,
+    "target_evaluation_uses_test_pool_only": true,
+    "prediction_ids_and_labels_match_frozen_test": true,
+    "all_scores_finite": true
+  },
+  "preregistered_pairing_support_rule_passed": false,
+  "dual_behavior_residual_supported_both_directions": true,
+  "directions": {
+    "HUI360_to_SSUP-A": {
+      "source": "HUI360",
+      "target": "SSUP-A",
+      "counts": {
+        "train": 1149,
+        "val": 268,
+        "test": 4875
+      },
+      "positives": {
+        "train": 164,
+        "val": 49,
+        "test": 148
+      },
+      "groups": {
+        "train": 12,
+        "val": 3,
+        "test": 5
+      },
+      "ensemble_metrics": {
+        "geometry": {
+          "n": 4875,
+          "positives": 148,
+          "prevalence": 0.030358974358974358,
+          "AP": 0.15136803973570076,
+          "AUROC": 0.8681810645000829
+        },
+        "dual_no_pair": {
+          "n": 4875,
+          "positives": 148,
+          "prevalence": 0.030358974358974358,
+          "AP": 0.1689118040450358,
+          "AUROC": 0.8899507715881736
+        },
+        "weighted_no_pair": {
+          "n": 4875,
+          "positives": 148,
+          "prevalence": 0.030358974358974358,
+          "AP": 0.13445155268106426,
+          "AUROC": 0.8532338664028954
+        },
+        "full_selected": {
+          "n": 4875,
+          "positives": 148,
+          "prevalence": 0.030358974358974358,
+          "AP": 0.15384108793707424,
+          "AUROC": 0.8730367240521671
+        }
+      },
+      "ensemble_AP_differences": {
+        "dual_no_pair_minus_geometry": 0.017543764309335047,
+        "full_selected_minus_dual_no_pair": -0.015070716107961568,
+        "full_selected_minus_weighted_no_pair": 0.019389535256009977
+      },
+      "bootstrap_95pct_intervals": {
+        "dual_no_pair_minus_geometry": [
+          0.0013780617132781448,
+          0.02822401732310087
+        ],
+        "full_selected_minus_dual_no_pair": [
+          -0.024108977130871984,
+          -0.004342998337537124
+        ],
+        "full_selected_minus_weighted_no_pair": [
+          0.008479760748501347,
+          0.02941318892972128
+        ]
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "source": "SSUP-A",
+      "target": "HUI360",
+      "counts": {
+        "train": 4896,
+        "val": 1202,
+        "test": 407
+      },
+      "positives": {
+        "train": 105,
+        "val": 30,
+        "test": 68
+      },
+      "groups": {
+        "train": 4,
+        "val": 1,
+        "test": 9
+      },
+      "ensemble_metrics": {
+        "geometry": {
+          "n": 407,
+          "positives": 68,
+          "prevalence": 0.16707616707616707,
+          "AP": 0.28466939123076196,
+          "AUROC": 0.7400225576956445
+        },
+        "dual_no_pair": {
+          "n": 407,
+          "positives": 68,
+          "prevalence": 0.16707616707616707,
+          "AP": 0.33113077187841944,
+          "AUROC": 0.7703453062640986
+        },
+        "weighted_no_pair": {
+          "n": 407,
+          "positives": 68,
+          "prevalence": 0.16707616707616707,
+          "AP": 0.372146344488473,
+          "AUROC": 0.7933801839319798
+        },
+        "full_selected": {
+          "n": 407,
+          "positives": 68,
+          "prevalence": 0.16707616707616707,
+          "AP": 0.35558507557875724,
+          "AUROC": 0.7876539996529586
+        }
+      },
+      "ensemble_AP_differences": {
+        "dual_no_pair_minus_geometry": 0.04646138064765748,
+        "full_selected_minus_dual_no_pair": 0.0244543037003378,
+        "full_selected_minus_weighted_no_pair": -0.016561268909715765
+      },
+      "bootstrap_95pct_intervals": {
+        "dual_no_pair_minus_geometry": [
+          0.02948583018204192,
+          0.07517793352363406
+        ],
+        "full_selected_minus_dual_no_pair": [
+          -0.003536387941016239,
+          0.05329027537075434
+        ],
+        "full_selected_minus_weighted_no_pair": [
+          -0.05661487536056187,
+          0.007657055825087797
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "packages": {
+    "numpy": "2.2.6",
+    "torch": "2.13.0",
+    "scikit-learn": "1.7.2",
+    "PyYAML": "6.0.3",
+    "pytest": "9.1.1",
+    "pandas": "2.3.3",
+    "opencv-python-headless": null,
+    "transformers": null,
+    "huggingface-hub": "1.31.0"
+  },
+  "cuda_available": true,
+  "torch_cuda_version": "13.0"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "acie.cross-domain-preregistration.v1",
+  "date": "2026-09-13",
+  "status": "frozen_before_target_export_and_scoring",
+  "primary_metric": "average_precision",
+  "secondary_metric": "AUROC",
+  "directions": [
+    "HUI360_to_SSUP-A",
+    "SSUP-A_to_HUI360"
+  ],
+  "seeds": [11, 22, 33, 44, 55],
+  "source_development": {
+    "split_seed": 42,
+    "validation_fraction": 0.2,
+    "grouping": "date when group_id is available, otherwise recording",
+    "selection": "source validation early stopping only"
+  },
+  "target_evaluation": {
+    "pool": "upstream configuration include_recordings_val exported as ACIE test pool",
+    "seed_ensemble": "arithmetic mean of five predicted probabilities",
+    "uncertainty": "2000-replicate target date-group bootstrap",
+    "test_time_adaptation": false
+  },
+  "methods": {
+    "geometry": {
+      "config": "configs/geometry.yaml",
+      "sha256": "c25354a2e92ed67940d7b96f0c0f14e38aec090fdeb554b4f88a480fefb348ca"
+    },
+    "dual_no_pair": {
+      "config": "configs/dual_no_pair.yaml",
+      "sha256": "fbc5c5044ab2370ff289a39f16b4e6a3cdd84fb8495467d90c2e7e1067098082"
+    },
+    "weighted_no_pair": {
+      "config": "configs/dual_no_pair_weighted_selected.yaml",
+      "sha256": "8802963d615035bd8398789b23902b5216befe514d8c3005153d8e97d015de20"
+    },
+    "full_selected": {
+      "config": "configs/full_source_selected.yaml",
+      "sha256": "ac77034d834db9607fd685b555fdfca5a20c8c261b6f4d8ad0987ada1b7e7a4e"
+    }
+  },
+  "primary_comparisons": [
+    "full_selected_minus_weighted_no_pair",
+    "full_selected_minus_dual_no_pair",
+    "dual_no_pair_minus_geometry"
+  ],
+  "pairing_support_rule": "The pairing contribution requires positive full_selected-minus-weighted_no_pair ensemble AP in both directions; confidence intervals and all per-seed results are reported regardless of sign.",
+  "frozen_data_versions": {
+    "upstream_code_commit": "a6bd61c8539061242cbf756a18847c0900a8707c",
+    "huggingface_dataset_revision": "c7bcce944ff451682ee996412917d70720592fbd"
+  },
+  "known_upstream_config_data_mismatches": {
+    "HUI360_train": [
+      "rosbag2_2025_07_10-10_29_13"
+    ],
+    "SSUP-A_test": [
+      "2023_07_11_albee_square_landfill_0",
+      "2023_07_12_albee_square_landfill_1"
+    ]
+  },
+  "reporting_boundary": "A direction with a listed missing recording is labeled an available official-config subset and is not presented as a complete official benchmark."
+}

@@ -1,0 +1,21 @@
+seed: 42
+kind: dual_no_pair
+hidden: 64
+dropout: 0.1
+epochs: 50
+geometry_epochs: 30
+batch_size: 64
+pair_batch_size: 64
+lr: 0.001
+weight_decay: 0.0005
+patience: 10
+pair_lambda: 0.0
+device: cpu
+num_threads: 2
+matching:
+  k: 3
+  radius_quantile: 0.75
+  bandwidth: 1.0
+  max_abs_z: 3.0
+  max_negative_track_uses: 12
+  candidate_neighbors: 128

@@ -1,0 +1,702 @@
+{
+  "schema": "acie.behavior-information-control-validation.v1",
+  "status": "passed",
+  "models": 10,
+  "prediction_rows": 26410,
+  "checks_passed": 65,
+  "checks_total": 65,
+  "errors": [],
+  "checks": [
+    {
+      "name": "protocol identity and digest",
+      "passed": true,
+      "detail": {
+        "digest": "c4933706d240831bc79e2b545abc894524aa0fa60ed879bc73b115224a21301a",
+        "evidence_class": "post-primary-result mechanism follow-up; not part of the original preregistration"
+      }
+    },
+    {
+      "name": "summary identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-summary.v1",
+        "protocol_digest": "c4933706d240831bc79e2b545abc894524aa0fa60ed879bc73b115224a21301a",
+        "seeds": [
+          11,
+          22,
+          33,
+          44,
+          55
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: frozen mapping hash",
+      "passed": true,
+      "detail": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0"
+    },
+    {
+      "name": "HUI360_to_SSUP-A: mapping is exact within-split/group derangement",
+      "passed": true,
+      "detail": {
+        "rows": 6292,
+        "parts": {
+          "train": 1149,
+          "val": 268,
+          "test": 4875
+        }
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.7452717596751054
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "seed": 11,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.7452717596751054,
+        "target_AP": 0.13682707257923427,
+        "target_AUROC": 0.8613992933064226,
+        "wall_seconds_this_invocation": 0.0004754066467285156
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "unique": 4875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.13682707257923427,
+          0.8613992933064226
+        ],
+        "recorded": [
+          0.13682707257923427,
+          0.8613992933064226
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.7480363919517894
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "seed": 22,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.7480363919517894,
+        "target_AP": 0.16215281158020506,
+        "target_AUROC": 0.871197090892458,
+        "wall_seconds_this_invocation": 0.0004622936248779297
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "unique": 4875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.16215281158020506,
+          0.871197090892458
+        ],
+        "recorded": [
+          0.16215281158020506,
+          0.871197090892458
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.7782488853412578
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "seed": 33,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.7782488853412578,
+        "target_AP": 0.12670543946848317,
+        "target_AUROC": 0.84824098479694,
+        "wall_seconds_this_invocation": 0.0003840923309326172
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "unique": 4875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.12670543946848317,
+          0.84824098479694
+        ],
+        "recorded": [
+          0.12670543946848317,
+          0.84824098479694
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.741568611413436
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "seed": 44,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.741568611413436,
+        "target_AP": 0.13255445391780085,
+        "target_AUROC": 0.8488427606790204,
+        "wall_seconds_this_invocation": 0.00035381317138671875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "unique": 4875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.13255445391780085,
+          0.8488427606790204
+        ],
+        "recorded": [
+          0.13255445391780085,
+          0.8488427606790204
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.7289105567880358
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "seed": 55,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.7289105567880358,
+        "target_AP": 0.15726218494313807,
+        "target_AUROC": 0.8684612261934029,
+        "wall_seconds_this_invocation": 0.00040030479431152344
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "unique": 4875
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.15726218494313807,
+          0.8684612261934029
+        ],
+        "recorded": [
+          0.15726218494313807,
+          0.8684612261934029
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: seeds align and differ",
+      "passed": true,
+      "detail": [
+        "76ce127081767ae01673d0f22c170593815faf0347ce40e86ccfa0e5bbf01a7a",
+        "8c45e422b49151898ec617f6a38741afae7e5b422a2011ab3816094c68632ff3",
+        "bd0eff52735b6e2e4ec9b5002c65a77499e6f99c71c7a038357a6c2babea32f9",
+        "d601fe2cf72fd42487a66f8f492a8f50ee376c47d022c909a540cca83d46f4da",
+        "b9a137bcfbb13d5482667f26800aaa196fc36d38241a9c1ffa3baaef43c08a0b"
+      ]
+    },
+    {
+      "name": "HUI360_to_SSUP-A: ensemble metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.1503750391039859,
+        "AUROC": 0.866222791439631,
+        "predictions": "outputs/behavior_information_control/HUI360_to_SSUP-A/permuted_behavior/five_seed_ensemble_predictions.jsonl",
+        "predictions_sha256": "1efc61939b903ec8d2e2232d96124e7565b563cfffa3bf6c6abf43ba37bf9997"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: ensemble artifact hash",
+      "passed": true,
+      "detail": "1efc61939b903ec8d2e2232d96124e7565b563cfffa3bf6c6abf43ba37bf9997"
+    },
+    {
+      "name": "HUI360_to_SSUP-A: primary comparison",
+      "passed": true,
+      "detail": {
+        "point": 0.018536764941049916,
+        "interval": [
+          0.006359800524086384,
+          0.027186785846392586
+        ],
+        "supported": true
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: frozen mapping hash",
+      "passed": true,
+      "detail": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba"
+    },
+    {
+      "name": "SSUP-A_to_HUI360: mapping is exact within-split/group derangement",
+      "passed": true,
+      "detail": {
+        "rows": 6505,
+        "parts": {
+          "train": 4896,
+          "val": 1202,
+          "test": 407
+        }
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.18767581491479615
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "seed": 11,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.18767581491479615,
+        "target_AP": 0.2591150028307258,
+        "target_AUROC": 0.7138643067846607,
+        "wall_seconds_this_invocation": 0.0005080699920654297
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "unique": 407
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.2591150028307258,
+          0.7138643067846607
+        ],
+        "recorded": [
+          0.2591150028307258,
+          0.7138643067846607
+        ]
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.20693246464677295
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "seed": 22,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.20693246464677295,
+        "target_AP": 0.2447397607368807,
+        "target_AUROC": 0.7001127884782232,
+        "wall_seconds_this_invocation": 0.0004203319549560547
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "unique": 407
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.2447397607368807,
+          0.7001127884782232
+        ],
+        "recorded": [
+          0.2447397607368807,
+          0.7001127884782232
+        ]
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.2090173019804014
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "seed": 33,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.2090173019804014,
+        "target_AP": 0.312648855065718,
+        "target_AUROC": 0.7549453409682457,
+        "wall_seconds_this_invocation": 0.00041294097900390625
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "unique": 407
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.312648855065718,
+          0.7549453409682457
+        ],
+        "recorded": [
+          0.312648855065718,
+          0.7549453409682457
+        ]
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.1820792919554905
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "seed": 44,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.1820792919554905,
+        "target_AP": 0.32263524619371803,
+        "target_AUROC": 0.7712996703106022,
+        "wall_seconds_this_invocation": 0.00038313865661621094
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "unique": 407
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.32263524619371803,
+          0.7712996703106022
+        ],
+        "recorded": [
+          0.32263524619371803,
+          0.7712996703106022
+        ]
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: complete artifacts",
+      "passed": true,
+      "detail": {
+        "source_val_AP": 0.21165232760842426
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: identity and source-only selection",
+      "passed": true,
+      "detail": {
+        "schema": "acie.behavior-information-control-run.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "seed": 55,
+        "model": "dual_no_pair",
+        "control": "within-split within-date permuted behavior",
+        "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+        "checkpoint_selection": "source validation AP only",
+        "target_labels_used_for_selection": false,
+        "source_val_AP": 0.21165232760842426,
+        "target_AP": 0.26240697371059546,
+        "target_AUROC": 0.7182457053617907,
+        "wall_seconds_this_invocation": 0.0003883838653564453
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: exact target IDs",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "unique": 407
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: metrics",
+      "passed": true,
+      "detail": {
+        "calculated": [
+          0.26240697371059546,
+          0.7182457053617907
+        ],
+        "recorded": [
+          0.26240697371059546,
+          0.7182457053617907
+        ]
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: geometry branch invariant",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "tolerance": 1e-07
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: seeds align and differ",
+      "passed": true,
+      "detail": [
+        "181fc47f258a44e36d77c9033d79aba053a05e6876a8ae8b2910cf58d7eaf53e",
+        "0bd9f0519eb05956720bd80347b7659e22161774c4f0e26f750e9723545ce1d5",
+        "0a87987a5c348a3f29dc2a684f80acd8a6f54124db3a3d747aedef30d491d365",
+        "f1720c5b95aaea8d9f14e05438bb6a5b52bc789a6f7ee2255e327e6f5958c339",
+        "55ce62d89848bca51c514f08cfbf71b7297eeb7a5805619830cc5a6cbcc12bc4"
+      ]
+    },
+    {
+      "name": "SSUP-A_to_HUI360: ensemble metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.2821876697398489,
+        "AUROC": 0.737159465556134,
+        "predictions": "outputs/behavior_information_control/SSUP-A_to_HUI360/permuted_behavior/five_seed_ensemble_predictions.jsonl",
+        "predictions_sha256": "84e79222a98cf1dfd0b1a68effd496bb50cea51b3118e722209e06af3a2a8c5b"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: ensemble artifact hash",
+      "passed": true,
+      "detail": "84e79222a98cf1dfd0b1a68effd496bb50cea51b3118e722209e06af3a2a8c5b"
+    },
+    {
+      "name": "SSUP-A_to_HUI360: primary comparison",
+      "passed": true,
+      "detail": {
+        "point": 0.04894310213857056,
+        "interval": [
+          0.031947929259211555,
+          0.08571443854592739
+        ],
+        "supported": true
+      }
+    },
+    {
+      "name": "support conclusion matches rule",
+      "passed": true,
+      "detail": {
+        "calculated": true,
+        "recorded": true
+      }
+    }
+  ]
+}

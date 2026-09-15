@@ -1,0 +1,872 @@
+{
+  "schema": "acie.official-fair-lstm-five-seed-validation.v1",
+  "status": "passed",
+  "protocol": "official_baselines/protocol_v1/PROTOCOL.json",
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "directions": [
+    "HUI360_to_SSUP-A",
+    "SSUP-A_to_HUI360"
+  ],
+  "models": 10,
+  "prediction_rows": 26410,
+  "checks_passed": 97,
+  "checks_total": 97,
+  "errors": [],
+  "checks": [
+    {
+      "name": "summary identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-lstm-five-seed-summary.v1",
+        "model": "lstm",
+        "seeds": [
+          11,
+          22,
+          33,
+          44,
+          55
+        ]
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: official LSTM config",
+      "passed": true,
+      "detail": {
+        "epochs": 75,
+        "hidden_dim": 128,
+        "num_layers": 3,
+        "dropout": 0.0
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 11
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.10647347093010731,
+        "AUROC": 0.7434619408916003
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "1db9ad76269127d12f0ffb7782bbbf0ec38d39ccc31e11b28f8730d9e73de8a4",
+        "predictions": "907d1ddaeaedfe3a36d919176d2a7af78a61fa9fd17a59f2e505e1d986565e7d"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "positives": 148
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 4875,
+        "score_min": 0.0034082101192325354,
+        "score_max": 0.9834902286529541
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed11: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 11,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 22
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.1459783805589387,
+        "AUROC": 0.799065460637282
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "4b7b1ed162ab5d1877a013a9232ecbcf50e745e474ee784c51ff9688120a07be",
+        "predictions": "38677764a8857e30f01c06cd9f10f509ec102589135c5fd9915c41b99c455c27"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "positives": 148
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 4875,
+        "score_min": 0.02706913836300373,
+        "score_max": 0.9878155589103699
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed22: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 22,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 33
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.12396331601704004,
+        "AUROC": 0.7864853429693709
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "f4270ebedde20e83a94ad423c2ebfad40fb880e8dc91b42f77ab3f7f2bf43866",
+        "predictions": "e2f2372772d8198da8201becafd0b34b0a01da727f987c5e4d9777bbc4f73663"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "positives": 148
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 4875,
+        "score_min": 0.01134390290826559,
+        "score_max": 0.9697069525718689
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed33: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 33,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 44
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.11030017635658963,
+        "AUROC": 0.7531289487075399
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "cbf7514a0855d8d40bd697305534cf3be44b9924faec2ac713edc907bc77ff09",
+        "predictions": "bc01fb15187b3eb8829347e2ff1eff4f608691c953a170e36a807d1b19f25d3f"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "positives": 148
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 4875,
+        "score_min": 0.016645126044750214,
+        "score_max": 0.9757340550422668
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed44: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 44,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 55
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.12390417922667578,
+        "AUROC": 0.7918627322054442
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "07de0033feaf982a15d917eada187305069669bc550c418ce5f675397266d294",
+        "predictions": "66685f8952d6538d5182def091be401dea2c0f12274b6646cbf8b04ce10cfada"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "positives": 148
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 4875,
+        "score_min": 1.7540539829496993e-06,
+        "score_max": 0.9996997117996216
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A/seed55: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "HUI360_to_SSUP-A",
+        "model": "lstm",
+        "seed": 55,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: IDs align across seeds",
+      "passed": true,
+      "detail": 4875
+    },
+    {
+      "name": "HUI360_to_SSUP-A: seeds change predictions",
+      "passed": true,
+      "detail": [
+        "907d1ddaeaedfe3a36d919176d2a7af78a61fa9fd17a59f2e505e1d986565e7d",
+        "38677764a8857e30f01c06cd9f10f509ec102589135c5fd9915c41b99c455c27",
+        "e2f2372772d8198da8201becafd0b34b0a01da727f987c5e4d9777bbc4f73663",
+        "bc01fb15187b3eb8829347e2ff1eff4f608691c953a170e36a807d1b19f25d3f",
+        "66685f8952d6538d5182def091be401dea2c0f12274b6646cbf8b04ce10cfada"
+      ]
+    },
+    {
+      "name": "HUI360_to_SSUP-A: ensemble metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.13401228705617824,
+        "AUROC": 0.787814681616247
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: ensemble predictions",
+      "passed": true,
+      "detail": {
+        "rows": 4875,
+        "sha256": "bedd6ec4e0b9dc0518ff4aca8cbcfa4bf0dc767e2d29bc994f58cbf48a24c8d8"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: comparison with geometry",
+      "passed": true,
+      "detail": {
+        "point": -0.017355752679522524,
+        "recorded": -0.017355752679522524
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: comparison with dual_no_pair",
+      "passed": true,
+      "detail": {
+        "point": -0.03489951698885757,
+        "recorded": -0.03489951698885757
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: comparison with weighted_no_pair",
+      "passed": true,
+      "detail": {
+        "point": -0.00043926562488602605,
+        "recorded": -0.00043926562488602605
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: comparison with full_selected",
+      "passed": true,
+      "detail": {
+        "point": -0.019828800880896003,
+        "recorded": -0.019828800880896003
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: comparison with official_mlp",
+      "passed": true,
+      "detail": {
+        "point": 0.04082966083509723,
+        "recorded": 0.04082966083509723
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: official loader scope train",
+      "passed": true,
+      "detail": {
+        "file": "hui_train_scope.json",
+        "samples": 1149,
+        "positives": 164,
+        "windows_sha256": "5e2091bc3d134aaf25ce81ea2efe026112e0f4ca514b2b1faa70049f85c74ecb"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: official loader scope source_val",
+      "passed": true,
+      "detail": {
+        "file": "hui_val_scope.json",
+        "samples": 268,
+        "positives": 49,
+        "windows_sha256": "a413de1e772eb89631c110ce82d4f5a2e96ccd174cf08be02f18a10a099d03f0"
+      }
+    },
+    {
+      "name": "HUI360_to_SSUP-A: official loader scope target_test",
+      "passed": true,
+      "detail": {
+        "file": "ssup_target_scope.json",
+        "samples": 4875,
+        "positives": 148,
+        "windows_sha256": "c6c49e2fbaae2876e638f4673300bd9d543320dc19b09952f62c015be95b5e93"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: official LSTM config",
+      "passed": true,
+      "detail": {
+        "epochs": 30,
+        "hidden_dim": 128,
+        "num_layers": 3,
+        "dropout": 0.0
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 11
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.41773109726420826,
+        "AUROC": 0.7799757070969981
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "a3a2dc78583dbfe3b73408b5062871df276d969eaaf387d7f26c56475340ce3c",
+        "predictions": "c5776a1ecc4fdb6d5a1a1547276507baab02f8823037504f8b3281ad1723f28a"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "positives": 68
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 407,
+        "score_min": 1.2559564055436567e-08,
+        "score_max": 0.995506763458252
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed11: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 11,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 22
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.37311410165016606,
+        "AUROC": 0.7123893805309736
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "dcab8fc1f7650bfbe5b826a841e24e37606580598ceadd6e8c87c74c22fecc98",
+        "predictions": "f783e0c74e31ca17d7f90b47f032fdcb4008b97818f7f4f9b6e72cf6f89aa8bf"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "positives": 68
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 407,
+        "score_min": 3.515287172461967e-09,
+        "score_max": 0.9924870729446411
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed22: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 22,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 33
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.454605166920131,
+        "AUROC": 0.7876539996529586
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "d6a9ab54503a625fae1300b8237c7cf59776a7a191a9124c27e1ac63133d688d",
+        "predictions": "93e18a6b4e1fd8fcd893c2871dd953d70baaac593f0f3046bb7f48bcf8e88670"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "positives": 68
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 407,
+        "score_min": 2.1584989440270874e-07,
+        "score_max": 0.9856416583061218
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed33: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 33,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 44
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.4296891933133158,
+        "AUROC": 0.7916449765747007
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "9d42e7712d3fd548f38e7f766237d4471e5e03f2668bc46711efcdc1eff3c612",
+        "predictions": "9201f8b1d08f0747c4825fe781fcff659f7f87a610caa4ca0458f6fcb9c12b52"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "positives": 68
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 407,
+        "score_min": 1.0863417401196784e-06,
+        "score_max": 0.9919381737709045
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed44: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 44,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: identity",
+      "passed": true,
+      "detail": {
+        "schema": "acie.official-fair-result.v1",
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 55
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: source-only selection",
+      "passed": true,
+      "detail": {
+        "target_labels_used_for_selection": false,
+        "checkpoint_selection": "best source-validation AP"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: finite metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.37373220228208914,
+        "AUROC": 0.7319104633003644
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: artifact hashes",
+      "passed": true,
+      "detail": {
+        "checkpoint": "58f27adf35121e2cbc81867df739caf5bb1b6d0dbc352d661aea8982b97b79e5",
+        "predictions": "45762ca34527b4412d5f6ee27eec4bb6de35356e710bed78d33ecb93b8b2bc2e"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: count and labels",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "positives": 68
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: predictions valid",
+      "passed": true,
+      "detail": {
+        "unique_ids": 407,
+        "score_min": 3.4858982189689414e-07,
+        "score_max": 0.9881961345672607
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360/seed55: provenance",
+      "passed": true,
+      "detail": {
+        "direction": "SSUP-A_to_HUI360",
+        "model": "lstm",
+        "seed": 55,
+        "seed_control": "HUI360_SEED environment variable through patches/hui360_seed_override.patch"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: IDs align across seeds",
+      "passed": true,
+      "detail": 407
+    },
+    {
+      "name": "SSUP-A_to_HUI360: seeds change predictions",
+      "passed": true,
+      "detail": [
+        "c5776a1ecc4fdb6d5a1a1547276507baab02f8823037504f8b3281ad1723f28a",
+        "f783e0c74e31ca17d7f90b47f032fdcb4008b97818f7f4f9b6e72cf6f89aa8bf",
+        "93e18a6b4e1fd8fcd893c2871dd953d70baaac593f0f3046bb7f48bcf8e88670",
+        "9201f8b1d08f0747c4825fe781fcff659f7f87a610caa4ca0458f6fcb9c12b52",
+        "45762ca34527b4412d5f6ee27eec4bb6de35356e710bed78d33ecb93b8b2bc2e"
+      ]
+    },
+    {
+      "name": "SSUP-A_to_HUI360: ensemble metrics",
+      "passed": true,
+      "detail": {
+        "AP": 0.4123804913422789,
+        "AUROC": 0.7733819191393372
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: ensemble predictions",
+      "passed": true,
+      "detail": {
+        "rows": 407,
+        "sha256": "308270d88ea17f527dc1cd47e372bc5ffdc47527c6b7a6a171801665776536fc"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: comparison with geometry",
+      "passed": true,
+      "detail": {
+        "point": 0.12771110011151693,
+        "recorded": 0.12771110011151693
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: comparison with dual_no_pair",
+      "passed": true,
+      "detail": {
+        "point": 0.08124971946385945,
+        "recorded": 0.08124971946385945
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: comparison with weighted_no_pair",
+      "passed": true,
+      "detail": {
+        "point": 0.040234146853805886,
+        "recorded": 0.040234146853805886
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: comparison with full_selected",
+      "passed": true,
+      "detail": {
+        "point": 0.05679541576352165,
+        "recorded": 0.05679541576352165
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: comparison with official_mlp",
+      "passed": true,
+      "detail": {
+        "point": -0.013980519226356958,
+        "recorded": -0.013980519226356958
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: official loader scope train",
+      "passed": true,
+      "detail": {
+        "file": "ssup_train_scope.json",
+        "samples": 4896,
+        "positives": 105,
+        "windows_sha256": "c8fa9305253b421b53855fa60ace51958a5b6ac75fa55f74f9b2792006f17a62"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: official loader scope source_val",
+      "passed": true,
+      "detail": {
+        "file": "ssup_val_scope.json",
+        "samples": 1202,
+        "positives": 30,
+        "windows_sha256": "ae2a46c9695da40e70c3f63745b0d16507c57279caf5f26d8f076be347696483"
+      }
+    },
+    {
+      "name": "SSUP-A_to_HUI360: official loader scope target_test",
+      "passed": true,
+      "detail": {
+        "file": "hui_target_scope.json",
+        "samples": 407,
+        "positives": 68,
+        "windows_sha256": "0cecb6aae0cce4ec430176c23a6be12d711c8a62cbf4b85e5aa651559734d15a"
+      }
+    }
+  ]
+}

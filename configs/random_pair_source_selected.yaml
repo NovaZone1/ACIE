@@ -1,0 +1,25 @@
+# Post-hoc pairing-identity control matched to full_source_selected.yaml.
+# It differs from full_selected only by shuffling matched negative identities.
+seed: 42
+kind: random_pair
+hidden: 64
+dropout: 0.1
+epochs: 50
+geometry_epochs: 30
+batch_size: 64
+pair_batch_size: 64
+lr: 0.001
+weight_decay: 0.0005
+patience: 10
+pair_lambda: 0.03
+class_weighted: true
+device: cpu
+num_threads: 2
+matching:
+  k: 3
+  radius_quantile: 0.75
+  bandwidth: 1.0
+  max_abs_z: 3.0
+  max_negative_track_uses: 12
+  candidate_neighbors: 128
+  context_policy: any

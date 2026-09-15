@@ -1,0 +1,440 @@
+{
+  "schema": "acie.official-baseline-protocol.v1",
+  "upstream_commit": "a6bd61c8539061242cbf756a18847c0900a8707c",
+  "data_revision": "c7bcce944ff451682ee996412917d70720592fbd",
+  "offline_loader_revision_argument": "main",
+  "primary_metrics": [
+    "AP",
+    "AUROC"
+  ],
+  "checkpoint_selection": "maximum source-validation AP",
+  "target_policy": "one evaluation after checkpoint selection; no target threshold tuning",
+  "native_results_policy": "reported separately because target labels select checkpoints",
+  "directions": {
+    "HUI360_to_SSUP-A": {
+      "source": "HUI360",
+      "target": "SSUP-A",
+      "fair": {
+        "train": {
+          "samples": 1149,
+          "positives": 164,
+          "recordings": [
+            "rosbag2_2025_07_10-15_47_18",
+            "rosbag2_2025_07_11-10_28_07",
+            "rosbag2_2025_07_11-11_18_00",
+            "rosbag2_2025_07_11-13_27_26",
+            "rosbag2_2025_07_11-14_54_55",
+            "rosbag2_2025_07_16-13_12_03",
+            "rosbag2_2025_07_16-14_07_49",
+            "rosbag2_2025_07_16-15_50_45",
+            "rosbag2_2025_07_17-11_28_34",
+            "rosbag2_2025_07_17-12_52_12",
+            "rosbag2_2025_07_18-10_37_07",
+            "rosbag2_2025_07_22-09_38_18",
+            "rosbag2_2025_07_22-10_59_25",
+            "rosbag2_2025_07_22-12_18_30",
+            "rosbag2_2025_07_22-13_30_39",
+            "rosbag2_2025_07_23-11_01_56",
+            "rosbag2_2025_07_23-12_18_45",
+            "rosbag2_2025_07_23-13_17_40",
+            "rosbag2_2025_07_23-14_30_55",
+            "rosbag2_2025_07_24-10_41_01",
+            "rosbag2_2025_07_24-12_14_56",
+            "rosbag2_2025_07_24-13_33_54",
+            "rosbag2_2025_07_24-14_33_36",
+            "rosbag2_2025_07_29-10_23_14",
+            "rosbag2_2025_07_29-13_17_18",
+            "rosbag2_2025_07_29-14_09_46",
+            "rosbag2_2025_10_15-09_37_49",
+            "rosbag2_2025_10_15-11_03_05",
+            "rosbag2_2025_10_15-12_02_00",
+            "rosbag2_2025_10_15-13_11_27",
+            "rosbag2_2025_10_15-14_02_29",
+            "rosbag2_2025_10_15-14_30_03",
+            "rosbag2_2025_10_16-09_27_48",
+            "rosbag2_2025_10_16-12_47_57",
+            "rosbag2_2025_10_20-10_13_32",
+            "rosbag2_2025_10_20-11_51_02",
+            "rosbag2_2025_10_20-16_02_46"
+          ],
+          "tracks_sha256": "4aa5fde791351c4cb55db9f899ab9ec353360989cb3da5e6470da66a62562ee6",
+          "windows_sha256": "5e2091bc3d134aaf25ce81ea2efe026112e0f4ca514b2b1faa70049f85c74ecb"
+        },
+        "source_val": {
+          "samples": 268,
+          "positives": 49,
+          "recordings": [
+            "rosbag2_2025_07_07-10_24_20",
+            "rosbag2_2025_07_07-10_49_31",
+            "rosbag2_2025_07_25-10_52_32",
+            "rosbag2_2025_07_25-14_14_16",
+            "rosbag2_2025_10_09-08_52_20",
+            "rosbag2_2025_10_09-10_23_38"
+          ],
+          "tracks_sha256": "93dc6508ea7deda23960cf870039e78646828e7107d09b70f832c8dac406a23c",
+          "windows_sha256": "a413de1e772eb89631c110ce82d4f5a2e96ccd174cf08be02f18a10a099d03f0"
+        },
+        "target_test": {
+          "samples": 4875,
+          "positives": 148,
+          "recordings": [
+            "2023_07_06_albee_square_landfill_0",
+            "2023_07_06_albee_square_landfill_1",
+            "2023_07_06_albee_square_recycle_0",
+            "2023_07_06_albee_square_recycle_1",
+            "2023_07_07_albee_square_landfill_0",
+            "2023_07_07_albee_square_landfill_1",
+            "2023_07_07_albee_square_recycle_0",
+            "2023_07_07_albee_square_recycle_1",
+            "2023_07_11_albee_square_landfill_1",
+            "2023_07_11_albee_square_recycle_0",
+            "2023_07_11_albee_square_recycle_1",
+            "2023_07_12_albee_square_landfill_0",
+            "2023_07_12_albee_square_recycle_0",
+            "2023_07_12_albee_square_recycle_1",
+            "2023_07_14_albee_square_landfill",
+            "2023_07_14_albee_square_recycle"
+          ],
+          "tracks_sha256": "064f1f5977dada1802ba10ac0a81737ee4cb9f34150e59ec618b4965368c9bd0",
+          "windows_sha256": "c6c49e2fbaae2876e638f4673300bd9d543320dc19b09952f62c015be95b5e93"
+        }
+      },
+      "native_available_subset": {
+        "train": {
+          "samples": 1417,
+          "positives": 213,
+          "recordings": [
+            "rosbag2_2025_07_07-10_24_20",
+            "rosbag2_2025_07_07-10_49_31",
+            "rosbag2_2025_07_10-15_47_18",
+            "rosbag2_2025_07_11-10_28_07",
+            "rosbag2_2025_07_11-11_18_00",
+            "rosbag2_2025_07_11-13_27_26",
+            "rosbag2_2025_07_11-14_54_55",
+            "rosbag2_2025_07_16-13_12_03",
+            "rosbag2_2025_07_16-14_07_49",
+            "rosbag2_2025_07_16-15_50_45",
+            "rosbag2_2025_07_17-11_28_34",
+            "rosbag2_2025_07_17-12_52_12",
+            "rosbag2_2025_07_18-10_37_07",
+            "rosbag2_2025_07_22-09_38_18",
+            "rosbag2_2025_07_22-10_59_25",
+            "rosbag2_2025_07_22-12_18_30",
+            "rosbag2_2025_07_22-13_30_39",
+            "rosbag2_2025_07_23-11_01_56",
+            "rosbag2_2025_07_23-12_18_45",
+            "rosbag2_2025_07_23-13_17_40",
+            "rosbag2_2025_07_23-14_30_55",
+            "rosbag2_2025_07_24-10_41_01",
+            "rosbag2_2025_07_24-12_14_56",
+            "rosbag2_2025_07_24-13_33_54",
+            "rosbag2_2025_07_24-14_33_36",
+            "rosbag2_2025_07_25-10_52_32",
+            "rosbag2_2025_07_25-14_14_16",
+            "rosbag2_2025_07_29-10_23_14",
+            "rosbag2_2025_07_29-13_17_18",
+            "rosbag2_2025_07_29-14_09_46",
+            "rosbag2_2025_10_09-08_52_20",
+            "rosbag2_2025_10_09-10_23_38",
+            "rosbag2_2025_10_15-09_37_49",
+            "rosbag2_2025_10_15-11_03_05",
+            "rosbag2_2025_10_15-12_02_00",
+            "rosbag2_2025_10_15-13_11_27",
+            "rosbag2_2025_10_15-14_02_29",
+            "rosbag2_2025_10_15-14_30_03",
+            "rosbag2_2025_10_16-09_27_48",
+            "rosbag2_2025_10_16-12_47_57",
+            "rosbag2_2025_10_20-10_13_32",
+            "rosbag2_2025_10_20-11_51_02",
+            "rosbag2_2025_10_20-16_02_46"
+          ],
+          "tracks_sha256": "34f8adcbb11bba6324a230bc4c509758ed771725924d2f4dc7d3fe922026792c",
+          "windows_sha256": "5cecdd55c25772892c930e9e508fc9ebd7bd034be992657bfe07be558a26930a"
+        },
+        "target_val": {
+          "samples": 4875,
+          "positives": 148,
+          "recordings": [
+            "2023_07_06_albee_square_landfill_0",
+            "2023_07_06_albee_square_landfill_1",
+            "2023_07_06_albee_square_recycle_0",
+            "2023_07_06_albee_square_recycle_1",
+            "2023_07_07_albee_square_landfill_0",
+            "2023_07_07_albee_square_landfill_1",
+            "2023_07_07_albee_square_recycle_0",
+            "2023_07_07_albee_square_recycle_1",
+            "2023_07_11_albee_square_landfill_1",
+            "2023_07_11_albee_square_recycle_0",
+            "2023_07_11_albee_square_recycle_1",
+            "2023_07_12_albee_square_landfill_0",
+            "2023_07_12_albee_square_recycle_0",
+            "2023_07_12_albee_square_recycle_1",
+            "2023_07_14_albee_square_landfill",
+            "2023_07_14_albee_square_recycle"
+          ],
+          "tracks_sha256": "064f1f5977dada1802ba10ac0a81737ee4cb9f34150e59ec618b4965368c9bd0",
+          "windows_sha256": "c6c49e2fbaae2876e638f4673300bd9d543320dc19b09952f62c015be95b5e93"
+        }
+      },
+      "configs": {
+        "fair_train_mlp": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_train_mlp.yaml",
+          "sha256": "8aa2a1c4f37dff24af6d2af50dd6bc81b76c8d1da77108cbb861fd2fb642e963"
+        },
+        "fair_target_eval_mlp": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_target_eval_mlp.yaml",
+          "sha256": "673b0d607e5d04d8194ae0db8a561934040aa486c713c65ab3994935ffcf0d96"
+        },
+        "native_available_subset_mlp": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/native_available_subset_mlp.yaml",
+          "sha256": "de0ca61ab76d1d3eac3a37f3951dd1b86bf5ca7ab8ff958c1bc3a5e81914373e"
+        },
+        "fair_train_lstm": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_train_lstm.yaml",
+          "sha256": "36b121a58b17fa7f71787e28230bfbf5863ba168128fc9add19288abdf3f0628"
+        },
+        "fair_target_eval_lstm": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_target_eval_lstm.yaml",
+          "sha256": "0838b283a7e259b7eb8f04dfd8fe0ca42b730579cc620a1468e3e89e5ed9ff55"
+        },
+        "native_available_subset_lstm": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/native_available_subset_lstm.yaml",
+          "sha256": "5748c69c5639caa5c0f353f9ddff6556288fa2612b30b00f2de3f64c7eba48e6"
+        },
+        "fair_train_stgcn": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_train_stgcn.yaml",
+          "sha256": "fb70aedec72ab7e55b480f83d6a2f55e67bea63bbdb604014b6c23c6d5e62b1c"
+        },
+        "fair_target_eval_stgcn": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/fair_target_eval_stgcn.yaml",
+          "sha256": "01370de0801bb9b02d4439fa223c630f170f55accc7665b3065fbacf0aa82a04"
+        },
+        "native_available_subset_stgcn": {
+          "path": "official_baselines/protocol_v1/HUI360_to_SSUP-A/native_available_subset_stgcn.yaml",
+          "sha256": "87cd03a51424d169f1fdaa127b935379cde9178ea6ace3443549b6b0dc5d5ac5"
+        }
+      },
+      "track_files": {
+        "train": "acie_v1_hui360_to_ssup_a_source_train.txt",
+        "val": "acie_v1_hui360_to_ssup_a_source_val.txt",
+        "test": "acie_v1_hui360_to_ssup_a_target_test.txt",
+        "source_all": "acie_v1_hui360_to_ssup_a_source_all.txt"
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "source": "SSUP-A",
+      "target": "HUI360",
+      "fair": {
+        "train": {
+          "samples": 4896,
+          "positives": 105,
+          "recordings": [
+            "2022_09_21_astor_place_landfill",
+            "2022_09_21_astor_place_recycle",
+            "2022_09_28_astor_place_landfill",
+            "2022_09_28_astor_place_recycle",
+            "2022_10_06_astor_place_landfill",
+            "2022_10_06_astor_place_recycle",
+            "2022_10_12_astor_place_landfill_0",
+            "2022_10_12_astor_place_landfill_1",
+            "2022_10_12_astor_place_recycle_0",
+            "2022_10_12_astor_place_recycle_1"
+          ],
+          "tracks_sha256": "150549a1d927c06255022c8e257e07df3a6f66b933dbbe530fc40ae8a1b64185",
+          "windows_sha256": "c8fa9305253b421b53855fa60ace51958a5b6ac75fa55f74f9b2792006f17a62"
+        },
+        "source_val": {
+          "samples": 1202,
+          "positives": 30,
+          "recordings": [
+            "2022_09_26_astor_place_landfill",
+            "2022_09_26_astor_place_recycle"
+          ],
+          "tracks_sha256": "7e0f42c9ff3d9fc7e058a9b90b3a2ce454bb313369547a199eacfdb6258aaddf",
+          "windows_sha256": "ae2a46c9695da40e70c3f63745b0d16507c57279caf5f26d8f076be347696483"
+        },
+        "target_test": {
+          "samples": 407,
+          "positives": 68,
+          "recordings": [
+            "rosbag2_2025_07_07-11_16_10",
+            "rosbag2_2025_07_07-12_38_45",
+            "rosbag2_2025_07_07-15_33_32",
+            "rosbag2_2025_07_15-12_39_21",
+            "rosbag2_2025_07_15-13_41_01",
+            "rosbag2_2025_07_15-14_48_22",
+            "rosbag2_2025_07_21-10_22_11",
+            "rosbag2_2025_07_21-11_56_40",
+            "rosbag2_2025_07_21-13_09_22",
+            "rosbag2_2025_07_21-14_11_37",
+            "rosbag2_2025_07_21-15_15_07",
+            "rosbag2_2025_07_28-10_18_10",
+            "rosbag2_2025_07_28-11_25_33",
+            "rosbag2_2025_07_28-13_05_46",
+            "rosbag2_2025_07_28-14_19_07",
+            "rosbag2_2025_10_07-15_03_48",
+            "rosbag2_2025_10_07-16_21_39",
+            "rosbag2_2025_10_09-17_37_23",
+            "rosbag2_2025_10_09-18_50_21",
+            "rosbag2_2025_10_15-12_27_14",
+            "rosbag2_2025_10_16-11_29_56",
+            "rosbag2_2025_10_17-13_19_29",
+            "rosbag2_2025_10_17-14_28_15",
+            "rosbag2_2025_10_17-15_11_00",
+            "rosbag2_2025_10_17-16_47_09"
+          ],
+          "tracks_sha256": "5792724215ed3c30c277e6272eb5f56585d9850ed8f5d22b58f21bd1ab3bc4e5",
+          "windows_sha256": "0cecb6aae0cce4ec430176c23a6be12d711c8a62cbf4b85e5aa651559734d15a"
+        }
+      },
+      "native_available_subset": {
+        "train": {
+          "samples": 6098,
+          "positives": 135,
+          "recordings": [
+            "2022_09_21_astor_place_landfill",
+            "2022_09_21_astor_place_recycle",
+            "2022_09_26_astor_place_landfill",
+            "2022_09_26_astor_place_recycle",
+            "2022_09_28_astor_place_landfill",
+            "2022_09_28_astor_place_recycle",
+            "2022_10_06_astor_place_landfill",
+            "2022_10_06_astor_place_recycle",
+            "2022_10_12_astor_place_landfill_0",
+            "2022_10_12_astor_place_landfill_1",
+            "2022_10_12_astor_place_recycle_0",
+            "2022_10_12_astor_place_recycle_1"
+          ],
+          "tracks_sha256": "020b1d5210d703cdc85807fce4130a6b123476d74b9bdfbf9d6749c4bae8dbfc",
+          "windows_sha256": "59d18c270b4e4dc7a0a050a72143674de6aa2be8450fb056699d10539b55a2d5"
+        },
+        "target_val": {
+          "samples": 407,
+          "positives": 68,
+          "recordings": [
+            "rosbag2_2025_07_07-11_16_10",
+            "rosbag2_2025_07_07-12_38_45",
+            "rosbag2_2025_07_07-15_33_32",
+            "rosbag2_2025_07_15-12_39_21",
+            "rosbag2_2025_07_15-13_41_01",
+            "rosbag2_2025_07_15-14_48_22",
+            "rosbag2_2025_07_21-10_22_11",
+            "rosbag2_2025_07_21-11_56_40",
+            "rosbag2_2025_07_21-13_09_22",
+            "rosbag2_2025_07_21-14_11_37",
+            "rosbag2_2025_07_21-15_15_07",
+            "rosbag2_2025_07_28-10_18_10",
+            "rosbag2_2025_07_28-11_25_33",
+            "rosbag2_2025_07_28-13_05_46",
+            "rosbag2_2025_07_28-14_19_07",
+            "rosbag2_2025_10_07-15_03_48",
+            "rosbag2_2025_10_07-16_21_39",
+            "rosbag2_2025_10_09-17_37_23",
+            "rosbag2_2025_10_09-18_50_21",
+            "rosbag2_2025_10_15-12_27_14",
+            "rosbag2_2025_10_16-11_29_56",
+            "rosbag2_2025_10_17-13_19_29",
+            "rosbag2_2025_10_17-14_28_15",
+            "rosbag2_2025_10_17-15_11_00",
+            "rosbag2_2025_10_17-16_47_09"
+          ],
+          "tracks_sha256": "5792724215ed3c30c277e6272eb5f56585d9850ed8f5d22b58f21bd1ab3bc4e5",
+          "windows_sha256": "0cecb6aae0cce4ec430176c23a6be12d711c8a62cbf4b85e5aa651559734d15a"
+        }
+      },
+      "configs": {
+        "fair_train_mlp": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_train_mlp.yaml",
+          "sha256": "6b3a633f3bc83f83aa6107d001fd444a0b9ed30fbb739df21829972c0166ebcf"
+        },
+        "fair_target_eval_mlp": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_target_eval_mlp.yaml",
+          "sha256": "6d8aa35817177e086ed3e5c5f10dafd9e34035b6a50f6785bf3a91a0ca217b88"
+        },
+        "native_available_subset_mlp": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/native_available_subset_mlp.yaml",
+          "sha256": "3f9180e4fa80087b8c0102e87110bfca7e7ecd344ccca368394dd5d69058262e"
+        },
+        "fair_train_lstm": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_train_lstm.yaml",
+          "sha256": "ae30a2ede145bf46153e1ec2ff99d701aa61fbb7c1853b5383649e9b65b19eb6"
+        },
+        "fair_target_eval_lstm": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_target_eval_lstm.yaml",
+          "sha256": "908600fee23c687940f46adc61e87d9aeacf934eae81db416b5977cfc881aa41"
+        },
+        "native_available_subset_lstm": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/native_available_subset_lstm.yaml",
+          "sha256": "8244e589454b4a5b37f5ef119f8020f6a431e5004632ce8e8120ba431f453e0c"
+        },
+        "fair_train_stgcn": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_train_stgcn.yaml",
+          "sha256": "bc87f603e45f174205ccf7a5012fc598d622242d40f8885515dcdf07230b4201"
+        },
+        "fair_target_eval_stgcn": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/fair_target_eval_stgcn.yaml",
+          "sha256": "df8a857f22e67115036c84196f90e740703f01ed4662039001e9c7d7c2bb5bb0"
+        },
+        "native_available_subset_stgcn": {
+          "path": "official_baselines/protocol_v1/SSUP-A_to_HUI360/native_available_subset_stgcn.yaml",
+          "sha256": "234b7f261f1ad70202d89b96fb6e314c94a61daa0ed4eecee9557b3eb4e06286"
+        }
+      },
+      "track_files": {
+        "train": "acie_v1_ssup_a_to_hui360_source_train.txt",
+        "val": "acie_v1_ssup_a_to_hui360_source_val.txt",
+        "test": "acie_v1_ssup_a_to_hui360_target_test.txt",
+        "source_all": "acie_v1_ssup_a_to_hui360_source_all.txt"
+      }
+    }
+  },
+  "official_default_seed": 42,
+  "comparison_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "seed_control_patch": "patches/hui360_seed_override.patch",
+  "model_specs": {
+    "lstm": {
+      "HUI360_to_SSUP-A": {
+        "epochs": 75,
+        "hidden_dim": 128,
+        "num_layers": 3,
+        "dropout": 0.0,
+        "official_config": "experiments/configs/cross_hui_ssup/lstm_base.yaml"
+      },
+      "SSUP-A_to_HUI360": {
+        "epochs": 30,
+        "hidden_dim": 128,
+        "num_layers": 3,
+        "dropout": 0.0,
+        "official_config": "experiments/configs/cross_ssup_hui/lstm_base.yaml"
+      }
+    },
+    "stgcn": {
+      "HUI360_to_SSUP-A": {
+        "epochs": 100,
+        "lr_scheduler_type": "none",
+        "normalize_keypoints_in_box": false,
+        "standardize_data": "none",
+        "in_channels": 3,
+        "layout": "openpose",
+        "edge_importance_weighting": true,
+        "official_config": "experiments/configs/cross_hui_ssup/stgcn_base.yaml"
+      },
+      "SSUP-A_to_HUI360": {
+        "epochs": 50,
+        "lr_scheduler_type": "none",
+        "normalize_keypoints_in_box": false,
+        "standardize_data": "none",
+        "in_channels": 3,
+        "layout": "openpose",
+        "edge_importance_weighting": true,
+        "official_config": "experiments/configs/cross_ssup_hui/stgcn_base.yaml"
+      }
+    }
+  }
+}

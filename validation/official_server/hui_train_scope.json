@@ -1,0 +1,12 @@
+{
+  "schema": "acie.official-loader-scope-check.v1",
+  "direction": "HUI360_to_SSUP-A",
+  "loader_split": "train",
+  "expected_part": "train",
+  "samples": 1149,
+  "positives": 164,
+  "exact_track_label_choice_and_frames": true,
+  "expected_windows_sha256": "5e2091bc3d134aaf25ce81ea2efe026112e0f4ca514b2b1faa70049f85c74ecb",
+  "observed_windows_sha256": "5e2091bc3d134aaf25ce81ea2efe026112e0f4ca514b2b1faa70049f85c74ecb",
+  "failures": []
+}

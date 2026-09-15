@@ -1,0 +1,87 @@
+{
+  "schema": "acie.control-validation.v1",
+  "status": "passed",
+  "bundle_samples": 7515,
+  "domains": [
+    "HUI360",
+    "SSUP-A"
+  ],
+  "methods": [
+    "geometry",
+    "fusion_mlp",
+    "matched_resampling",
+    "fusion_pair",
+    "dual_no_pair",
+    "full"
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "runs_checked": 60,
+  "splits": {
+    "HUI360": {
+      "train": {
+        "n": 663,
+        "positives": 91,
+        "groups": [
+          "HUI360::2025-07-10",
+          "HUI360::2025-07-11",
+          "HUI360::2025-07-16",
+          "HUI360::2025-07-18",
+          "HUI360::2025-07-23",
+          "HUI360::2025-07-24",
+          "HUI360::2025-07-29",
+          "HUI360::2025-10-09",
+          "HUI360::2025-10-20"
+        ]
+      },
+      "val": {
+        "n": 411,
+        "positives": 67,
+        "groups": [
+          "HUI360::2025-07-07",
+          "HUI360::2025-10-15",
+          "HUI360::2025-10-16"
+        ]
+      },
+      "test": {
+        "n": 343,
+        "positives": 55,
+        "groups": [
+          "HUI360::2025-07-17",
+          "HUI360::2025-07-22",
+          "HUI360::2025-07-25"
+        ]
+      }
+    },
+    "SSUP-A": {
+      "train": {
+        "n": 3980,
+        "positives": 89,
+        "groups": [
+          "SSUP-A::2022-09-21",
+          "SSUP-A::2022-10-06",
+          "SSUP-A::2022-10-12"
+        ]
+      },
+      "val": {
+        "n": 1202,
+        "positives": 30,
+        "groups": [
+          "SSUP-A::2022-09-26"
+        ]
+      },
+      "test": {
+        "n": 916,
+        "positives": 16,
+        "groups": [
+          "SSUP-A::2022-09-28"
+        ]
+      }
+    }
+  }
+}

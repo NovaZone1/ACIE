@@ -1,0 +1,2 @@
+# Editable project installation; dependencies are defined once in pyproject.toml.
+-e .

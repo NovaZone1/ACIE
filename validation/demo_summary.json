@@ -1,0 +1,7 @@
+{
+  "synthetic_only": true,
+  "training_status": "complete",
+  "checkpoint_reload_and_prediction_completed": true,
+  "benchmark_metrics": null,
+  "note": "Synthetic numeric results intentionally not presented as benchmark evidence."
+}

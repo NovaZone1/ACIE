@@ -1,0 +1,244 @@
+{
+  "schema": "acie.horizon-evaluation-protocol.v1",
+  "date": "2026-09-15",
+  "status": "frozen_before_horizon_model_scoring",
+  "classification": "post-primary-result E4 follow-up from the teacher-provided study plan",
+  "fps": 15.0,
+  "window_length_frames": 32,
+  "base_cutoff_frames": 16,
+  "horizon_shifts_frames": [
+    0,
+    8,
+    16,
+    24,
+    32
+  ],
+  "cutoff_seconds": [
+    1.0666666666666667,
+    1.6,
+    2.1333333333333333,
+    2.6666666666666665,
+    3.2
+  ],
+  "directions": {
+    "HUI360_to_SSUP-A": "SSUP-A",
+    "SSUP-A_to_HUI360": "HUI360"
+  },
+  "methods": [
+    "geometry",
+    "dual_no_pair"
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "checkpoints": {
+    "HUI360_to_SSUP-A": {
+      "geometry": {
+        "11": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/geometry/seed11/model/best.pt",
+          "sha256": "2668d260efee56dfbcabb768288f3fd8a16eaca4fd4c69e745713be688cfa1f7"
+        },
+        "22": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/geometry/seed22/model/best.pt",
+          "sha256": "01850d7a76e0ce759248436c0b7bfeedd7fa72a8a0149211f6ac2571c39d5ca8"
+        },
+        "33": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/geometry/seed33/model/best.pt",
+          "sha256": "7889df766845c652a4d41c83b7ecab2a7de534b2f88b81548a1cc3c830eadd9b"
+        },
+        "44": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/geometry/seed44/model/best.pt",
+          "sha256": "e16559ac79943ae55694b4179aa6852bd33767b1276e76b26aeaca6d24a2146b"
+        },
+        "55": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/geometry/seed55/model/best.pt",
+          "sha256": "b0b55f104f973a09b5b7e52812362d7e498bf769c7c6ffbceaa573fabc2f8b27"
+        }
+      },
+      "dual_no_pair": {
+        "11": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/dual_no_pair/seed11/model/best.pt",
+          "sha256": "ac8b2a451be5f8d7289d4979c940f33cb024306340254108ff85459fa2dfb89a"
+        },
+        "22": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/dual_no_pair/seed22/model/best.pt",
+          "sha256": "593441a40dabac58260aae32721d590af444c8ec6f8aeea084584c6dce2d4610"
+        },
+        "33": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/dual_no_pair/seed33/model/best.pt",
+          "sha256": "709182c013cb51c48d322de627e38aa014873d0013a9b9881001147bfed9a186"
+        },
+        "44": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/dual_no_pair/seed44/model/best.pt",
+          "sha256": "8ce5781452aba65f0a5c574650369f01b6ba3e1abd4518c9f64160ea934afde3"
+        },
+        "55": {
+          "path": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/dual_no_pair/seed55/model/best.pt",
+          "sha256": "15ba700160f917de130b00e6c86d849aa2b43e6a7e227fab08528880ee2358b3"
+        }
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "geometry": {
+        "11": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/geometry/seed11/model/best.pt",
+          "sha256": "47bd7652c3ef5912856d81e6f5af2ae6031019734f3c91ab5858e4374d5827d2"
+        },
+        "22": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/geometry/seed22/model/best.pt",
+          "sha256": "527cea64d6415684e44173da2524da19decf62ec52948b463951ce0e559b3744"
+        },
+        "33": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/geometry/seed33/model/best.pt",
+          "sha256": "5fd63e83785f0914dc493b8c0f65d44c5948fd2ac6fef3f563dce7ecc07518c3"
+        },
+        "44": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/geometry/seed44/model/best.pt",
+          "sha256": "876c556e25c38c1e0e4630b918c2eb809411ebc2ecfd3439f470ec08f5abce6c"
+        },
+        "55": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/geometry/seed55/model/best.pt",
+          "sha256": "a9c800c80da85f89769c488914b65b9c7419f48a6b60eef4bd5a7f245415f190"
+        }
+      },
+      "dual_no_pair": {
+        "11": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/dual_no_pair/seed11/model/best.pt",
+          "sha256": "f92ec60a0cce18fcfe5e99f66c545ff582ab574a614b695c9339c49feab39cb6"
+        },
+        "22": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/dual_no_pair/seed22/model/best.pt",
+          "sha256": "21f792597fda0a654199f36260e160617bdb8363034c126f232514b2dd0f0726"
+        },
+        "33": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/dual_no_pair/seed33/model/best.pt",
+          "sha256": "b988871d65e868a10bb867e733fa03ad52e5ef0d2565b78fb05ee935554a453d"
+        },
+        "44": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/dual_no_pair/seed44/model/best.pt",
+          "sha256": "2f3ddeaeaaecaf0f614a490a8fac5db12c10b3492bf102b6d3d615b61ffefd74"
+        },
+        "55": {
+          "path": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/dual_no_pair/seed55/model/best.pt",
+          "sha256": "911993d9320e0041fecf9852d73ecb33415ea904b8d3ace26112f118678a6aa7"
+        }
+      }
+    }
+  },
+  "bundles": {
+    "HUI360": [
+      {
+        "cutoff_frames": 16,
+        "shift_frames": 0,
+        "cutoff_seconds": 1.0666666666666667,
+        "n": 407,
+        "positives": 68,
+        "bundle": "data/horizon_evaluation/HUI360/cutoff_frames_016/bundle.npz",
+        "bundle_sha256": "2b9ab1277c9b4e25fcf4fb957bfb54915657f7a3a34b166b53bcf4c3cdf15f6b"
+      },
+      {
+        "cutoff_frames": 24,
+        "shift_frames": 8,
+        "cutoff_seconds": 1.6,
+        "n": 320,
+        "positives": 56,
+        "bundle": "data/horizon_evaluation/HUI360/cutoff_frames_024/bundle.npz",
+        "bundle_sha256": "856affe5a0d3d8e4d4e910deccec4144ee2b6a5b0cec3b0fd2cda896d3839b4f"
+      },
+      {
+        "cutoff_frames": 32,
+        "shift_frames": 16,
+        "cutoff_seconds": 2.1333333333333333,
+        "n": 253,
+        "positives": 50,
+        "bundle": "data/horizon_evaluation/HUI360/cutoff_frames_032/bundle.npz",
+        "bundle_sha256": "2a7ba2cea6fcdeac3b3a23703b9732d4cc7fdcbf6d8224ef1e2560016e16646e"
+      },
+      {
+        "cutoff_frames": 40,
+        "shift_frames": 24,
+        "cutoff_seconds": 2.6666666666666665,
+        "n": 196,
+        "positives": 37,
+        "bundle": "data/horizon_evaluation/HUI360/cutoff_frames_040/bundle.npz",
+        "bundle_sha256": "d17fe88ee716f02386138c85ebb14605863a08646c1127dd2cb603b0e79ad2ed"
+      },
+      {
+        "cutoff_frames": 48,
+        "shift_frames": 32,
+        "cutoff_seconds": 3.2,
+        "n": 158,
+        "positives": 27,
+        "bundle": "data/horizon_evaluation/HUI360/cutoff_frames_048/bundle.npz",
+        "bundle_sha256": "0acdbf20fc588e18621b6e846748e1be93e0cce5942f9ea542616cf803f2f3a1"
+      }
+    ],
+    "SSUP-A": [
+      {
+        "cutoff_frames": 16,
+        "shift_frames": 0,
+        "cutoff_seconds": 1.0666666666666667,
+        "n": 4875,
+        "positives": 148,
+        "bundle": "data/horizon_evaluation/SSUP-A/cutoff_frames_016/bundle.npz",
+        "bundle_sha256": "1da6abf27c99c2094ebb6228dd2f8bb9156bc5833e2781088c78cb236d6d41e5"
+      },
+      {
+        "cutoff_frames": 24,
+        "shift_frames": 8,
+        "cutoff_seconds": 1.6,
+        "n": 3972,
+        "positives": 138,
+        "bundle": "data/horizon_evaluation/SSUP-A/cutoff_frames_024/bundle.npz",
+        "bundle_sha256": "0c20000f4f56e1732be54aa93f2144cb4f0eb6703a7fbc8d94876af46a101903"
+      },
+      {
+        "cutoff_frames": 32,
+        "shift_frames": 16,
+        "cutoff_seconds": 2.1333333333333333,
+        "n": 3241,
+        "positives": 123,
+        "bundle": "data/horizon_evaluation/SSUP-A/cutoff_frames_032/bundle.npz",
+        "bundle_sha256": "89d85ce09e8e5518b28314b5578d6ef3a08bfc4d0e65e7e424e6da83e4f29df9"
+      },
+      {
+        "cutoff_frames": 40,
+        "shift_frames": 24,
+        "cutoff_seconds": 2.6666666666666665,
+        "n": 2689,
+        "positives": 108,
+        "bundle": "data/horizon_evaluation/SSUP-A/cutoff_frames_040/bundle.npz",
+        "bundle_sha256": "bdf4702ffa58c77a31fdcd496694adb02d0aa3b2b7c68ecf8f6fd605d6526cf7"
+      },
+      {
+        "cutoff_frames": 48,
+        "shift_frames": 32,
+        "cutoff_seconds": 3.2,
+        "n": 2290,
+        "positives": 95,
+        "bundle": "data/horizon_evaluation/SSUP-A/cutoff_frames_048/bundle.npz",
+        "bundle_sha256": "770aa2a8c818ab07bac0503e675afbe06d6a168e545a7931227b013151bbb624"
+      }
+    ]
+  },
+  "threshold_policy": "each seed reuses its source-development frozen threshold; no target or horizon retuning",
+  "reporting": {
+    "ranking": "five-seed ensemble AP and AUROC",
+    "operating_point": "mean and sample standard deviation of per-seed recall and false-positive rate at each seed's frozen threshold",
+    "sets": [
+      "complete available set at each horizon",
+      "common tracks available at all five horizons"
+    ],
+    "uncertainty": "date-group clustered bootstrap for ensemble AP difference dual_no_pair minus geometry"
+  },
+  "labels": "unchanged from frozen official target manifests",
+  "negative_alignment": "shift the official maximum-mask proxy aligned negative prefix by the same frame offset",
+  "target_labels_used_for_selection": false,
+  "horizon_choice_note": "chosen after label-free feasibility counts and before any horizon model scores; 4.27 s excluded because HUI360 coverage fell to 100 tracks/18 positives",
+  "scope": "central capacity-matched E4 comparison; official architecture horizon extension is separate",
+  "protocol_digest": "01dd016c7363957fcb131fd398aac080ebd7c727272604b9e3ba0912cac11c27"
+}

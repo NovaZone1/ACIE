@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.cache/
+.env
+data/
+outputs/
+external/
+*.pt
+*.joblib
+
+# Private/internal research materials (not part of the public code release)
+docs/*.docx
+服务器新手使用规范..md
+scripts/server_setup_04.sh
+reports/server_official_baseline_setup_2026-09-14.md
+validation/server_04_setup_2026-09-14.json
+
+ARTIFACT_CHECKSUMS_SHA256.txt

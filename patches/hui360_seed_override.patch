@@ -1,0 +1,24 @@
+diff --git a/training.py b/training.py
+index 13ba233..05a12d7 100644
+--- a/training.py
++++ b/training.py
+@@ -65,6 +65,6 @@ from utils.training_utils import get_lr_scheduler
+ 
+ # Ensure reproducibility with seeds and use the FIX_LIST as seed for the dataloaders to always sample the same tracks from one epoch to another
+-SEED = 42
++SEED = int(os.environ.get("HUI360_SEED", "42"))
+ torch.manual_seed(SEED)
+ torch.cuda.manual_seed(SEED)
+ torch.cuda.manual_seed_all(SEED)
+diff --git a/datasets/HUIDataset.py b/datasets/HUIDataset.py
+index 528924e..3790b75 100644
+--- a/datasets/HUIDataset.py
++++ b/datasets/HUIDataset.py
+@@ -27,6 +27,6 @@ from datasets.HUIDatasetUtils import input_tensor_to_format_by_channel
+ 
+ # Ensure reproducibility with seeds (including for the random augmentations)
+-SEED = 42
++SEED = int(os.environ.get("HUI360_SEED", "42"))
+ torch.manual_seed(SEED)
+ torch.cuda.manual_seed(SEED)
+ torch.cuda.manual_seed_all(SEED)

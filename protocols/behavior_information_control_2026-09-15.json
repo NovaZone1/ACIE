@@ -1,0 +1,63 @@
+{
+  "schema": "acie.behavior-information-control-protocol.v1",
+  "date": "2026-09-15",
+  "status": "frozen_before_control_training_and_target_scoring",
+  "evidence_class": "post-primary-result mechanism follow-up; not part of the original preregistration",
+  "motivation": "Test whether the dual_no_pair gain requires the correct sample-to-behavior association rather than branch capacity.",
+  "data": "data/official_cross_domain.npz",
+  "data_sha256": "8c4b37afbfef94a84d80a3b6b166582a67e30da64083bde578bea4234296070c",
+  "config": "configs/dual_no_pair.yaml",
+  "config_sha256": "fbc5c5044ab2370ff289a39f16b4e6a3cdd84fb8495467d90c2e7e1067098082",
+  "model": "dual_no_pair",
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "permutation_seed": 20260915,
+  "transformation": {
+    "unit": "entire T x 119 behavior tensor",
+    "scope": "separately within each direction, split, and date group",
+    "algorithm": "deterministic Sattolo single-cycle permutation",
+    "fixed_points": 0,
+    "label_used": false,
+    "same_mapping_for_all_training_seeds": true,
+    "geometry_features_changed": false,
+    "labels_changed": false
+  },
+  "primary_metric": "AP",
+  "secondary_metric": "AUROC",
+  "aggregation": "arithmetic mean of five seed probabilities",
+  "uncertainty": "2000-replicate target date-group bootstrap",
+  "primary_comparison": "real dual_no_pair ensemble AP minus permuted-behavior ensemble AP",
+  "support_rule": "The behavior-association mechanism is supported only if the primary AP difference and its 95% group-bootstrap lower bound are positive in both directions.",
+  "directions": {
+    "HUI360_to_SSUP-A": {
+      "split": "outputs/frozen_cross_domain/HUI360_to_SSUP-A/split.json",
+      "split_sha256": "58af3e46988cde7892c3620cc7be00c83a4a9ecfa5adbf57939eb26362cb6eec",
+      "mapping": "protocols/behavior_information_control_mappings/HUI360_to_SSUP-A.jsonl",
+      "mapping_sha256": "776377d5ea6567cc377887a22c77486983141438b820f7729926f56653545cb0",
+      "mapped_samples": 6292,
+      "parts": {
+        "train": 1149,
+        "val": 268,
+        "test": 4875
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "split": "outputs/frozen_cross_domain/SSUP-A_to_HUI360/split.json",
+      "split_sha256": "5a3735c507f40696e3bfd2b6e37b53e84df4d7096abd2f3346e0a3d796712c68",
+      "mapping": "protocols/behavior_information_control_mappings/SSUP-A_to_HUI360.jsonl",
+      "mapping_sha256": "26b14bae096b7fa41bdc4283eb48ecbfa3d360614e45130f1d2a6138e550b3ba",
+      "mapped_samples": 6505,
+      "parts": {
+        "train": 4896,
+        "val": 1202,
+        "test": 407
+      }
+    }
+  },
+  "protocol_digest": "c4933706d240831bc79e2b545abc894524aa0fa60ed879bc73b115224a21301a"
+}

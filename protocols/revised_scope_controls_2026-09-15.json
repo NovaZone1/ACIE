@@ -1,0 +1,48 @@
+{
+  "schema": "acie.revised-scope-controls.protocol.v1",
+  "date": "2026-09-15",
+  "status": "frozen before the new random-pair and tree-baseline target scoring",
+  "post_hoc": true,
+  "motivation": "Strengthen the narrowed cross-domain behavior-residual claim without reviving the unsupported hard-negative or paired-loss contribution claim.",
+  "data": "data/official_cross_domain.npz",
+  "parent_frozen_protocol": "outputs/frozen_cross_domain/FROZEN_PROTOCOL.json",
+  "directions": [
+    "HUI360_to_SSUP-A",
+    "SSUP-A_to_HUI360"
+  ],
+  "seeds": [11, 22, 33, 44, 55],
+  "methods": {
+    "random_pair": {
+      "role": "exploratory pairing-identity robustness control",
+      "architecture": "same frozen-geometry plus behavior-residual architecture as full_selected",
+      "configuration": "same as full_selected except geometrically matched negative identities are shuffled while counts, weights, track constraints, and class weighting are preserved"
+    },
+    "histgb": {
+      "role": "strong simple nonlinear baseline",
+      "input": "source-scaled geometry plus last/mean/std behavior statistics",
+      "source_validation_candidates": [7, 15, 31]
+    },
+    "random_forest": {
+      "role": "strong simple nonlinear baseline",
+      "input": "source-scaled geometry plus last/mean/std behavior statistics",
+      "source_validation_candidates": [7, 15, 31]
+    }
+  },
+  "selection": "All model complexity, early stopping, and thresholds use source validation only. Target labels are used once for final metrics and offline diagnostics.",
+  "primary_metric": "AP",
+  "secondary_metric": "AUROC",
+  "aggregation": "five-seed probability ensemble; target date-group bootstrap with 2000 replicates",
+  "planned_comparisons": [
+    "full_selected minus random_pair",
+    "random_pair minus weighted_no_pair",
+    "histgb minus dual_no_pair",
+    "random_forest minus dual_no_pair"
+  ],
+  "scope_exclusions": [
+    "hard_negative",
+    "all-method horizon extension",
+    "complete in-domain matrix",
+    "MotionBERT"
+  ],
+  "scope_note": "The dataset remains the documented available official-configuration subset because three expected recordings are absent. These experiments are post-hoc robustness evidence, not part of the original preregistration."
+}

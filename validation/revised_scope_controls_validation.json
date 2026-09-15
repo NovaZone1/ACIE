@@ -1,0 +1,43 @@
+{
+  "schema": "acie.revised-scope-controls-validation.v1",
+  "status": "passed",
+  "runs_checked": 30,
+  "random_pair_identity_controls_checked": 10,
+  "random_pair_invariants": "positive order, weights, negative multiset, and frozen geometry state exactly match full_selected",
+  "directions": [
+    "HUI360_to_SSUP-A",
+    "SSUP-A_to_HUI360"
+  ],
+  "methods": [
+    "random_pair",
+    "histgb",
+    "random_forest"
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "splits": {
+    "HUI360_to_SSUP-A": {
+      "n_train": 1149,
+      "n_val": 268,
+      "n_test": 4875,
+      "test_positives": 148
+    },
+    "SSUP-A_to_HUI360": {
+      "n_train": 4896,
+      "n_val": 1202,
+      "n_test": 407,
+      "test_positives": 68
+    }
+  },
+  "random_pair_changed_negative_fraction": {
+    "min": 0.9724770642201835,
+    "max": 1.0,
+    "mean": 0.9891668191385149
+  },
+  "protocol_digest": "108f61b077ab40e9ec7de0d21bc8f134342b1a9961db966ba4d80e1a3f3d9c74"
+}
