@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 import torch
+from sklearn.metrics import average_precision_score
 from torch.nn import functional as F
 
 from acie.data import Bundle, make_split, prepare, resolve_split
@@ -27,6 +28,7 @@ from acie.vv_models import (
     effective_parameter_count,
 )
 from acie.vv_trees import candidate_grid, score_locked_tree, train_source_tree, tree_features
+from acie.vv_horizon import fpr_budget_threshold, paired_date_seed_bootstrap
 
 
 @pytest.fixture(scope="module")
@@ -190,3 +192,41 @@ def test_vv_tree_training_and_scoring_are_decoupled(vv_dataset, tmp_path):
     assert not (run / "test_predictions.jsonl").exists()
     score = score_locked_tree(bundle, run / "tree.joblib", run / "test_predictions.jsonl")
     assert score["weights_updated"] is False and score["scaler_updated"] is False
+
+
+def test_vv_fpr_budget_threshold_includes_all_negative_and_tie_rule():
+    y = np.asarray([0, 1, 0, 1])
+    scores = np.asarray([0.9, 0.8, 0.2, 0.1])
+    strict = fpr_budget_threshold(y, scores, 0.0)
+    assert strict["threshold"] > scores.max()
+    assert strict["source_val"]["recall"] == 0.0
+    relaxed = fpr_budget_threshold(y, scores, 0.5)
+    assert relaxed["threshold"] == 0.8
+    assert relaxed["source_val"]["recall"] == 0.5
+    assert relaxed["source_val"]["false_positive_rate"] == 0.5
+
+
+def test_vv_weighted_date_bootstrap_matches_expanded_sklearn_ap():
+    y = np.asarray([1, 0, 1, 0, 1, 0])
+    groups = np.asarray(["a", "a", "b", "b", "c", "c"])
+    a = np.asarray([[0.8, 0.8, 0.6, 0.5, 0.4, 0.1]])
+    b = np.asarray([[0.7, 0.6, 0.6, 0.5, 0.3, 0.2]])
+    first = paired_date_seed_bootstrap(y, groups, a, b, repeats=50, seed=91)
+
+    rng = np.random.default_rng(91)
+    expected = []
+    unique = np.unique(groups)
+    rows = {group: np.flatnonzero(groups == group) for group in unique}
+    for _ in range(50):
+        drawn = rng.integers(0, len(unique), len(unique))
+        counts = np.bincount(drawn, minlength=len(unique))
+        indices = np.concatenate([rows[group] for group, count in zip(unique, counts)
+                                  for _ in range(count)])
+        if len(np.unique(y[indices])) < 2:
+            continue
+        expected.append(float(average_precision_score(y[indices], a[0, indices]) -
+                              average_precision_score(y[indices], b[0, indices])))
+        rng.integers(0, 1, 1)  # mirror the joint-bootstrap seed draw
+    assert first["joint_date_and_seed"]["valid"] == len(expected)
+    np.testing.assert_allclose(first["joint_date_and_seed"]["interval_95"],
+                               np.quantile(expected, [0.025, 0.975]), rtol=0, atol=1e-15)

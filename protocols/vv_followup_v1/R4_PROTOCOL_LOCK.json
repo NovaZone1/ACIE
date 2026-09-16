@@ -1,0 +1,349 @@
+{
+  "schema": "acie.vv-r4-protocol-lock.v1",
+  "status": "locked_before_r4_scoring",
+  "selection": "R2 source-only selected identities and fixed final checkpoints",
+  "target_labels_used_for_selection": false,
+  "fps": 15.0,
+  "cutoff_frames": [
+    16,
+    24,
+    32,
+    40,
+    48
+  ],
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "primary_set": "tracks present at all five horizons within each target",
+  "thresholds": {
+    "f1": "each seed source-val maximum-F1 threshold frozen in checkpoint",
+    "fpr_budgets": [
+      0.01,
+      0.05
+    ],
+    "fpr_rule": "on source val maximize recall subject to FPR budget; ties choose higher threshold; include all-negative threshold"
+  },
+  "comparisons": [
+    "F-G",
+    "F-J_star",
+    "F-C_star"
+  ],
+  "directions": {
+    "HUI360_to_SSUP-A": {
+      "target": "SSUP-A",
+      "J_star": "JwD",
+      "C_star": "Cm",
+      "models": [
+        "G",
+        "F",
+        "JwD",
+        "Cm",
+        "histgb"
+      ],
+      "checkpoints": {
+        "G": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/G/fixed/11/best.pt",
+            "sha256": "c35efc3dd3f4eba6c72cd2c244a7587cb80d28557b4ac78b1cd879874b34dce9"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/G/fixed/22/best.pt",
+            "sha256": "8fe80b9b6a17ad81a82486301385baf452d30eb962e79b093f049eb792eed579"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/G/fixed/33/best.pt",
+            "sha256": "6bc22375d29da083c4eda66d620a7c8413d6e774164dba2140973a806f8dcc06"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/G/fixed/44/best.pt",
+            "sha256": "592a03bf5662b57e4a2825c78174aa68fb3b3fce373c5dcc7d29e37001fd87a9"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/G/fixed/55/best.pt",
+            "sha256": "fb1c8a954c4083293751d77ce786adcc3e99b92e97f2a7c574b5c8be8e69214a"
+          }
+        },
+        "F": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/F/fixed/11/best.pt",
+            "sha256": "a6334dda0472c371b687a0036603fd7db83a13bcb13d1b5b4b37590b0788be71"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/F/fixed/22/best.pt",
+            "sha256": "28ebc831bf32a79206ca08e6abd96cc59f73548fcec73740e8de3bee5c11a09b"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/F/fixed/33/best.pt",
+            "sha256": "82992abfdef2f05bc72ff0c983bbf259926ccbbf2d44688d3579d28511a450ab"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/F/fixed/44/best.pt",
+            "sha256": "d614407870208652da90bf97e817096fcef5de31234bf2fb9ed17def714a297f"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/F/fixed/55/best.pt",
+            "sha256": "df6640a7e3bb367df8e0d0be71f04116e8ace55b233724ab7fc62a95b9e0bced"
+          }
+        },
+        "JwD": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/JwD/fixed/11/best.pt",
+            "sha256": "7a960a85f611f52c3867f02a46af46dcd7c2973518582698a08dc4b206aa93ec"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/JwD/fixed/22/best.pt",
+            "sha256": "5f1f9ecf6eb1e4c7cbbd3368d77eff6827713609527caf315cfbbc12e2db0d0e"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/JwD/fixed/33/best.pt",
+            "sha256": "3f58a37b16f0db2ca5168492076c41970259fac5df2e7c55382b949377df4d6d"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/JwD/fixed/44/best.pt",
+            "sha256": "00b815e60af3841ef9f34ec4b8c8e7a7da0ce6e829f5177c1b28ccf4e7d20507"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/JwD/fixed/55/best.pt",
+            "sha256": "5433919666f6b7728fe974165bba3b3820aefddfe104d6edaf21988c44197d52"
+          }
+        },
+        "Cm": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/Cm/fixed/11/best.pt",
+            "sha256": "00a892bd3c7752e93b72283a295c39c33d3abe3dccbdca0de9bd16666b11be32"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/Cm/fixed/22/best.pt",
+            "sha256": "e2ae5d2693b06cb563129f48ac9f607e0901f69430f39808213d527330bda985"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/Cm/fixed/33/best.pt",
+            "sha256": "f11516d718dac3904f62f506509bb37f9a1795ee5c136521138a967eb8c9646b"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/Cm/fixed/44/best.pt",
+            "sha256": "2c5071df58bec09d611582e683b9738593a4f44db7d7e007e9f1b7a4b3e73772"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/Cm/fixed/55/best.pt",
+            "sha256": "c8483e20cbb6f942624a49c9a4ced3de0df9ff092597fa0dd3cef07351470654"
+          }
+        },
+        "histgb": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/HUI360_to_SSUP-A/histgb/fixed/11/tree.joblib",
+            "sha256": "c54de648d41ed814ec28b2e9ce6fe65d065a52c80c210ff5082e248410c1347c"
+          }
+        }
+      },
+      "bundles": [
+        {
+          "cutoff_frames": 16,
+          "cutoff_seconds": 1.0666666666666667,
+          "path": "data/horizon_evaluation/SSUP-A/cutoff_frames_016/bundle.npz",
+          "sha256": "1da6abf27c99c2094ebb6228dd2f8bb9156bc5833e2781088c78cb236d6d41e5",
+          "n": 4875,
+          "positives": 148,
+          "sample_id_digest": "1ec0f217d1751d5fa0ff188c6864c70d6da7d16a436236138f5bac36df0d6aff"
+        },
+        {
+          "cutoff_frames": 24,
+          "cutoff_seconds": 1.6,
+          "path": "data/horizon_evaluation/SSUP-A/cutoff_frames_024/bundle.npz",
+          "sha256": "0c20000f4f56e1732be54aa93f2144cb4f0eb6703a7fbc8d94876af46a101903",
+          "n": 3972,
+          "positives": 138,
+          "sample_id_digest": "f798b5811ed3e4535898c46f2550d8b72afce03ba1958da89220fef5b9f36443"
+        },
+        {
+          "cutoff_frames": 32,
+          "cutoff_seconds": 2.1333333333333333,
+          "path": "data/horizon_evaluation/SSUP-A/cutoff_frames_032/bundle.npz",
+          "sha256": "89d85ce09e8e5518b28314b5578d6ef3a08bfc4d0e65e7e424e6da83e4f29df9",
+          "n": 3241,
+          "positives": 123,
+          "sample_id_digest": "aaeb26b613c298358849a10b3f48791a456fd2147ec935b381a8353db9618b7f"
+        },
+        {
+          "cutoff_frames": 40,
+          "cutoff_seconds": 2.6666666666666665,
+          "path": "data/horizon_evaluation/SSUP-A/cutoff_frames_040/bundle.npz",
+          "sha256": "bdf4702ffa58c77a31fdcd496694adb02d0aa3b2b7c68ecf8f6fd605d6526cf7",
+          "n": 2689,
+          "positives": 108,
+          "sample_id_digest": "464d27a57c7a7dbf7af2ae9d4689f6e59f7bebb4159168abc8a1f808e626e377"
+        },
+        {
+          "cutoff_frames": 48,
+          "cutoff_seconds": 3.2,
+          "path": "data/horizon_evaluation/SSUP-A/cutoff_frames_048/bundle.npz",
+          "sha256": "770aa2a8c818ab07bac0503e675afbe06d6a168e545a7931227b013151bbb624",
+          "n": 2290,
+          "positives": 95,
+          "sample_id_digest": "0e0e8bade2abfcf0da40fb0dc4bb92bd57f76323d1cefd318cb1e2cf95c42313"
+        }
+      ]
+    },
+    "SSUP-A_to_HUI360": {
+      "target": "HUI360",
+      "J_star": "Jw",
+      "C_star": "C64",
+      "models": [
+        "G",
+        "F",
+        "Jw",
+        "C64",
+        "histgb"
+      ],
+      "checkpoints": {
+        "G": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/G/fixed/11/best.pt",
+            "sha256": "23981d767ff43c7dea619da6ce0b49f5f565af860e42a2b6c046509a5fc245ad"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/G/fixed/22/best.pt",
+            "sha256": "0b84b2dcc915ba275ea2e2338b344615f59b960299117d104bc81813097b901d"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/G/fixed/33/best.pt",
+            "sha256": "148a4465aa47d4c37ece2930db984e0fa185c9c0e586a000119f9a05cc128420"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/G/fixed/44/best.pt",
+            "sha256": "b4dd4260aa92e7a014975ba285fd96038c11fbe8855a3d655435af9a4e9b3555"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/G/fixed/55/best.pt",
+            "sha256": "12141b28551c316ec138270266c87ca4b737e102965a9946a23c1efd71c2f9d3"
+          }
+        },
+        "F": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/F/fixed/11/best.pt",
+            "sha256": "d57608792d9bbf63f36e4d9c5b19c24ad7fcdf697d3033a3cbe753fcc3da40d7"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/F/fixed/22/best.pt",
+            "sha256": "3409fd15b30421d881e6db08af9ed88a300a28a5c50f4e6e2a03c16c78efa829"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/F/fixed/33/best.pt",
+            "sha256": "69fd2ad152c854796ab9202fe744945e0c53b7b7c7e039cd27f0b4cdb87cc092"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/F/fixed/44/best.pt",
+            "sha256": "36c47601ea2bedb156eee26b28a9a8b45099af8ddfce0ece11892f4653ef45af"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/F/fixed/55/best.pt",
+            "sha256": "b0f52088326d4f351750bf693ec02ab658802e139e41c42ee26a7ae8f2879c1e"
+          }
+        },
+        "Jw": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/Jw/fixed/11/best.pt",
+            "sha256": "fbff30f25c640be4a3d2916037afbb0b250ea1a4d0934847322a93b591e14047"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/Jw/fixed/22/best.pt",
+            "sha256": "e869f0a8e2637617ec64045b02277855e32eecb2a2962f4e15f5c1f27baac89d"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/Jw/fixed/33/best.pt",
+            "sha256": "0577cba7468f7af4276d2ef1a24d952641f5b820525dc21f0d1071662af87577"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/Jw/fixed/44/best.pt",
+            "sha256": "afa2a46560c206b31ebab657d6924b476f8fd0a7590eb538fac1bdab80af7753"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/Jw/fixed/55/best.pt",
+            "sha256": "9699721c56769a14cec3ab88b925eb0a11ef2d21130e6a8dca527cb985809e73"
+          }
+        },
+        "C64": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/C64/fixed/11/best.pt",
+            "sha256": "c53e06026944e853cb50e77ac5bc60976f7cca06813d75640b8c497034f21525"
+          },
+          "22": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/C64/fixed/22/best.pt",
+            "sha256": "0a739a88ef580b6be62510b18c6cb394d43170cfb5cacbaed5a8ea05f399dc16"
+          },
+          "33": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/C64/fixed/33/best.pt",
+            "sha256": "70990b2fae91ffbdbee45f1903e0b404631de1b9ccd74f6bc5db2a69d4a03375"
+          },
+          "44": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/C64/fixed/44/best.pt",
+            "sha256": "85f30293f33618da916e4f2d2074ad2c84c0a1c6dd1129eb8ec2c11130176627"
+          },
+          "55": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/C64/fixed/55/best.pt",
+            "sha256": "afcc1711cc9fc18a34c2269154a86e59e365c7bcfeacf451550c31242115a61a"
+          }
+        },
+        "histgb": {
+          "11": {
+            "path": "outputs/vv_followup_v1/r2_final/SSUP-A_to_HUI360/histgb/fixed/11/tree.joblib",
+            "sha256": "0f6ad94e7c19c8e6fe29ff6c97cbf3fdfe09b6d86ae35d7ba747e053d7d09f4e"
+          }
+        }
+      },
+      "bundles": [
+        {
+          "cutoff_frames": 16,
+          "cutoff_seconds": 1.0666666666666667,
+          "path": "data/horizon_evaluation/HUI360/cutoff_frames_016/bundle.npz",
+          "sha256": "2b9ab1277c9b4e25fcf4fb957bfb54915657f7a3a34b166b53bcf4c3cdf15f6b",
+          "n": 407,
+          "positives": 68,
+          "sample_id_digest": "9a5952046508b4beb39d4587b733a9f625e77084e113715d030cc137af477de5"
+        },
+        {
+          "cutoff_frames": 24,
+          "cutoff_seconds": 1.6,
+          "path": "data/horizon_evaluation/HUI360/cutoff_frames_024/bundle.npz",
+          "sha256": "856affe5a0d3d8e4d4e910deccec4144ee2b6a5b0cec3b0fd2cda896d3839b4f",
+          "n": 320,
+          "positives": 56,
+          "sample_id_digest": "3e3bc5103776043fe31ff1a4214d69f4296484db46247d754a90011b5304368d"
+        },
+        {
+          "cutoff_frames": 32,
+          "cutoff_seconds": 2.1333333333333333,
+          "path": "data/horizon_evaluation/HUI360/cutoff_frames_032/bundle.npz",
+          "sha256": "2a7ba2cea6fcdeac3b3a23703b9732d4cc7fdcbf6d8224ef1e2560016e16646e",
+          "n": 253,
+          "positives": 50,
+          "sample_id_digest": "6d4dfa71d2374429b2aab659b0f67ac3387665d541ec2fee917b9a7f7a74dd6f"
+        },
+        {
+          "cutoff_frames": 40,
+          "cutoff_seconds": 2.6666666666666665,
+          "path": "data/horizon_evaluation/HUI360/cutoff_frames_040/bundle.npz",
+          "sha256": "d17fe88ee716f02386138c85ebb14605863a08646c1127dd2cb603b0e79ad2ed",
+          "n": 196,
+          "positives": 37,
+          "sample_id_digest": "bb8e0105ba3fa87f6522016151e0de0d2d4403239a2a565a01a9b402f6dfa3a7"
+        },
+        {
+          "cutoff_frames": 48,
+          "cutoff_seconds": 3.2,
+          "path": "data/horizon_evaluation/HUI360/cutoff_frames_048/bundle.npz",
+          "sha256": "0acdbf20fc588e18621b6e846748e1be93e0cce5942f9ea542616cf803f2f3a1",
+          "n": 158,
+          "positives": 27,
+          "sample_id_digest": "ec688ec3a7266211c6a271ae38cda0e1ae758373ee435014f55fe00c5fbe3b37"
+        }
+      ]
+    }
+  },
+  "training_in_r4": false,
+  "protocol_digest": "2eb730532319bc4db56a4f07c0c54bb3edc23157bc85d8c3a408684715705755"
+}

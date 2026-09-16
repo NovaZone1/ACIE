@@ -1,0 +1,124 @@
+{
+  "schema": "acie.vv-r3-split-lock.v1",
+  "status": "locked",
+  "created_at": "2026-09-16",
+  "data_sha256": "8c4b37afbfef94a84d80a3b6b166582a67e30da64083bde578bea4234296070c",
+  "splits": {
+    "HUI360_to_SSUP-A": {
+      "A": {
+        "dates": [
+          "2025-07-07",
+          "2025-07-18",
+          "2025-07-29"
+        ],
+        "train_n": 1211,
+        "train_positives": 186,
+        "val_n": 206,
+        "val_positives": 27,
+        "split_sha256": "5c6db0f4914c5d53e68ac91ab2652f3c764090ee6f41f0d5055e67cf7133f9eb"
+      },
+      "B": {
+        "dates": [
+          "2025-07-10",
+          "2025-07-22",
+          "2025-10-09"
+        ],
+        "train_n": 1215,
+        "train_positives": 175,
+        "val_n": 202,
+        "val_positives": 38,
+        "split_sha256": "7fbfeb1d892bdbe735b3630491211cda1ab48c2225aa610a63eab5a087772e3a"
+      },
+      "C": {
+        "dates": [
+          "2025-07-11",
+          "2025-07-23",
+          "2025-10-15"
+        ],
+        "train_n": 1054,
+        "train_positives": 155,
+        "val_n": 363,
+        "val_positives": 58,
+        "split_sha256": "8de072be00a969b5f6df6abc556a47153c1f75c6f9cb938d5cd33ea87bcf4cb2"
+      },
+      "D": {
+        "dates": [
+          "2025-07-16",
+          "2025-07-24",
+          "2025-10-16"
+        ],
+        "train_n": 1107,
+        "train_positives": 171,
+        "val_n": 310,
+        "val_positives": 42,
+        "split_sha256": "167e50b268790669efc5e850b363316770ed0e28fc30955ac53be80a54e824fe"
+      },
+      "E": {
+        "dates": [
+          "2025-07-17",
+          "2025-07-25",
+          "2025-10-20"
+        ],
+        "train_n": 1081,
+        "train_positives": 165,
+        "val_n": 336,
+        "val_positives": 48,
+        "split_sha256": "b0add315c7bfd73a92632ab5605cf4963f0b7d6ef48b87ef50306e9947f1e28d"
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "A": {
+        "dates": [
+          "2022-09-21"
+        ],
+        "train_n": 5071,
+        "train_positives": 111,
+        "val_n": 1027,
+        "val_positives": 24,
+        "split_sha256": "7a1718e994333beed2a6c47f6bb19e885a8252a7c6eae9b4c92c28a30247e910"
+      },
+      "B": {
+        "dates": [
+          "2022-09-26"
+        ],
+        "train_n": 4896,
+        "train_positives": 105,
+        "val_n": 1202,
+        "val_positives": 30,
+        "split_sha256": "39511dd6c361a70d5481dbe2393948febbc2656ab17de4e1aba395f5dd7d4964"
+      },
+      "C": {
+        "dates": [
+          "2022-09-28"
+        ],
+        "train_n": 5182,
+        "train_positives": 119,
+        "val_n": 916,
+        "val_positives": 16,
+        "split_sha256": "556e0ce855781f2b693c25bab0c92e45dc6591a786dff15d3b845bc73ee1feb9"
+      },
+      "D": {
+        "dates": [
+          "2022-10-06"
+        ],
+        "train_n": 5067,
+        "train_positives": 107,
+        "val_n": 1031,
+        "val_positives": 28,
+        "split_sha256": "355a0ca36c1a584970fb5a27b8db3bf2d517ba6969d558a462e0acc5cdb7970c"
+      },
+      "E": {
+        "dates": [
+          "2022-10-12"
+        ],
+        "train_n": 4176,
+        "train_positives": 98,
+        "val_n": 1922,
+        "val_positives": 37,
+        "split_sha256": "28e5f919c467f51f426e4ed64091ccb3acce12ebf71098980257e9ab88c2cf84"
+      }
+    }
+  },
+  "models": "G/F/J*/C* plus HistGB; identities and hyperparameters inherited from R2",
+  "target_scoring": false
+}

@@ -42,8 +42,8 @@ def two_level_bootstrap(y,groups,a,b,repeats=10000,seed=20260916):
 
 def main():
  p=argparse.ArgumentParser();root=Path(__file__).resolve().parents[1]
- p.add_argument('--root',type=Path,default=root);p.add_argument('--output',type=Path,default=Path('outputs/vv_followup_v1'));p.add_argument('--experiment',default='r1');p.add_argument('--bootstrap',type=int,default=10000)
- a=p.parse_args();root=a.root.resolve();base=(a.output if a.output.is_absolute() else root/a.output)/a.experiment
+ p.add_argument('--root',type=Path,default=root);p.add_argument('--output',type=Path,default=Path('outputs/vv_followup_v1'));p.add_argument('--experiment',default='r1');p.add_argument('--bootstrap',type=int,default=10000);p.add_argument('--selection-root',type=Path)
+ a=p.parse_args();root=a.root.resolve();base=(a.output if a.output.is_absolute() else root/a.output)/a.experiment;selection_root=(a.selection_root if a.selection_root is None or a.selection_root.is_absolute() else root/a.selection_root)
  lock=read_json(base/'TARGET_SCORING_LOCK.json')
  if lock.get('status')!='locked' or lock.get('checkpoint_count')!=92:raise ValueError('R1 target scoring lock is absent or incomplete')
  main_rows=[];comparisons=[];date_rows=[];all_data={}
@@ -59,7 +59,10 @@ def main():
     aps.append(float(average_precision_score(y,score)));aurocs.append(float(roc_auc_score(y,score)));model_scores.append(score)
    array=np.stack(model_scores);scores[model]=array
    main_rows.append({'direction':direction,'model':model,'representation':'a' if model=='G' else 'q' if model=='Q' else 'a+q statistics' if model in ('histgb','random_forest') else 'a+q','seeds':len(seeds),'effective_parameters':EXPECTED_PARAMETERS.get(model),'AP_mean':float(np.mean(aps)),'AP_sample_SD':float(np.std(aps,ddof=1)) if len(aps)>1 else None,'AUROC_mean':float(np.mean(aurocs)),'AUROC_sample_SD':float(np.std(aurocs,ddof=1)) if len(aurocs)>1 else None,'ensemble_AP':float(average_precision_score(reference_y,array.mean(0)))})
-  for opponent in ('Jw','C64'):
+  opponents=('Jw','C64')
+  if selection_root is not None:
+   selection=read_json(selection_root/direction/'MODEL_SELECTION_LOCK.json');opponents=(selection['J_star'],selection['C_star'])
+  for opponent in opponents:
    f=scores['F'];o=scores[opponent];seed_delta=[float(average_precision_score(reference_y,f[i])-average_precision_score(reference_y,o[i])) for i in range(5)]
    boot=two_level_bootstrap(reference_y,reference_groups,f,o,a.bootstrap,20260916)
    item={'direction':direction,'comparison':f'F-{opponent}','seed_AP_differences':seed_delta,'mean_AP_difference':float(np.mean(seed_delta)),'positive_seeds':int(np.sum(np.asarray(seed_delta)>0)),'bootstrap':boot}
@@ -81,9 +84,10 @@ def main():
   j=row['bootstrap']['joint_date_and_seed'];d=row['bootstrap']['date_only_fixed_seeds']
   flat.append({'direction':row['direction'],'comparison':row['comparison'],'mean_AP_difference':row['mean_AP_difference'],'positive_seeds':row['positive_seeds'],'joint_95_low':j['interval_95'][0],'joint_95_high':j['interval_95'][1],'joint_98_75_low':j['interval_98_75'][0],'joint_98_75_high':j['interval_98_75'][1],'date_only_95_low':d['interval_95'][0],'date_only_95_high':d['interval_95'][1]})
  write_csv(base/'primary_differences.csv',flat);write_csv(base/'date_diagnostics.csv',date_rows)
- summary={'schema':'acie.vv-r1-summary.v1','data':all_data,'main_table':main_rows,'primary_comparisons':comparisons,'target_lock_digest':lock['lock_digest'],'bootstrap_repeats':a.bootstrap}
+ summary={'schema':'acie.vv-r2-summary.v1' if selection_root is not None else 'acie.vv-r1-summary.v1','data':all_data,'main_table':main_rows,'primary_comparisons':comparisons,'target_lock_digest':lock['lock_digest'],'bootstrap_repeats':a.bootstrap}
  write_json(base/'summary.json',summary)
- lines=['# R1 fixed-configuration results','','All values are generated from locked per-seed target predictions. Pilot results are excluded.','', '| Direction | Model | AP mean | AP SD | AUROC mean | Ensemble AP |','|---|---:|---:|---:|---:|---:|']
+ title='R2 source-selected results' if selection_root is not None else 'R1 fixed-configuration results'
+ lines=[f'# {title}','','All values are generated from locked per-seed target predictions. Pilot results are excluded.','', '| Direction | Model | AP mean | AP SD | AUROC mean | Ensemble AP |','|---|---:|---:|---:|---:|---:|']
  for r in main_rows:lines.append(f"| {r['direction']} | {r['model']} | {r['AP_mean']:.6f} | {r['AP_sample_SD'] if r['AP_sample_SD'] is not None else 'NA'} | {r['AUROC_mean']:.6f} | {r['ensemble_AP']:.6f} |")
  lines+=['','## Registered primary differences','','| Direction | Comparison | Mean AP difference | Positive seeds | 95% joint interval | 98.75% joint interval |','|---|---:|---:|---:|---:|---:|']
  for r in comparisons:
