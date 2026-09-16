@@ -29,6 +29,7 @@ from acie.vv_models import (
 )
 from acie.vv_trees import candidate_grid, score_locked_tree, train_source_tree, tree_features
 from acie.vv_horizon import fpr_budget_threshold, paired_date_seed_bootstrap
+from acie.vv_diagnostics import confidence_only_behavior, permute_behavior_within_partition_date
 
 
 @pytest.fixture(scope="module")
@@ -230,3 +231,17 @@ def test_vv_weighted_date_bootstrap_matches_expanded_sklearn_ap():
     assert first["joint_date_and_seed"]["valid"] == len(expected)
     np.testing.assert_allclose(first["joint_date_and_seed"]["interval_95"],
                                np.quantile(expected, [0.025, 0.975]), rtol=0, atol=1e-15)
+
+
+def test_vv_r5_behavior_transforms_obey_registered_contract(vv_dataset):
+    bundle, split, _ = vv_dataset
+    permuted, audit = permute_behavior_within_partition_date(bundle, split, 20260916)
+    assert audit["fixed_points"] == 0
+    assert audit["mapping_count"] == sum(len(split[name]) for name in ("train", "val", "test"))
+    assert np.array_equal(permuted.a, bundle.a) and np.array_equal(permuted.y, bundle.y)
+    assert all(row["recipient"] != row["donor"] for row in audit["mapping"])
+    confidence = confidence_only_behavior(bundle)
+    shaped = confidence.q.reshape(*confidence.q.shape[:2], 17, 7)
+    original = bundle.q.reshape(*bundle.q.shape[:2], 17, 7)
+    assert np.count_nonzero(shaped[..., [0, 1, 3, 4]]) == 0
+    np.testing.assert_array_equal(shaped[..., [2, 5, 6]], original[..., [2, 5, 6]])

@@ -158,12 +158,17 @@ def _fit(
     epochs: int,
     out: Path,
     resume: bool,
+    positive_class_weight: float | None = None,
 ) -> tuple[list[dict[str, Any]], int, int, int]:
     device = torch.device(cfg["device"])
     model.to(device)
     configure_training_mode(model, model_id)
     parameters = [p for p in model.parameters() if p.requires_grad]
     optimizer = torch.optim.AdamW(parameters, lr=cfg["lr"], weight_decay=cfg["weight_decay"])
+    if positive_class_weight is not None and positive_class_weight <= 0:
+        raise ValueError("positive_class_weight must be positive")
+    pos_weight = (None if positive_class_weight is None else
+                  torch.tensor(float(positive_class_weight), dtype=torch.float32, device=device))
     batch_seed = derived_seed(master_seed, "classification_batches")
     dropout_seed = derived_seed(master_seed, "classification_dropout")
     batch_rng = np.random.default_rng(batch_seed)
@@ -220,7 +225,7 @@ def _fit(
             target = torch.from_numpy(y[ix].astype(np.float32)).to(device)
             optimizer.zero_grad(set_to_none=True)
             logits = model(aa, qq)[0]
-            loss = F.binary_cross_entropy_with_logits(logits, target)
+            loss = F.binary_cross_entropy_with_logits(logits, target, pos_weight=pos_weight)
             if not torch.isfinite(loss):
                 raise FloatingPointError(f"{model_id} produced a non-finite loss")
             loss.backward()
@@ -252,6 +257,7 @@ def _fit(
             "actual_optimizer_steps": optimizer_steps,
             "processed_examples": processed_examples,
             "cumulative_seconds": time.perf_counter() - training_start,
+            "positive_class_weight": positive_class_weight,
         })
         write_jsonl(out / "history.jsonl", history)
         payload = {
@@ -288,6 +294,7 @@ def train_source_model(
     geometry_checkpoint: str | Path | None = None,
     resume: bool = False,
     context: dict[str, Any] | None = None,
+    positive_class_weight: float | None = None,
 ) -> dict[str, Any]:
     """Train using source train/val only. This function never scores target test."""
     cfg = _validate_config(config)
@@ -304,9 +311,12 @@ def train_source_model(
 
     split_hash = digest_object(split)
     context = dict(context or {})
-    run_key = digest_object({"model_id": model_id, "seed": master_seed, "config": cfg,
-                             "split_hash": split_hash, "provenance": bundle.provenance,
-                             "geometry_checkpoint": str(geometry_checkpoint) if geometry_checkpoint else None})
+    run_identity = {"model_id": model_id, "seed": master_seed, "config": cfg,
+                    "split_hash": split_hash, "provenance": bundle.provenance,
+                    "geometry_checkpoint": str(geometry_checkpoint) if geometry_checkpoint else None}
+    if positive_class_weight is not None:
+        run_identity["positive_class_weight"] = float(positive_class_weight)
+    run_key = digest_object(run_identity)
     run_path = out / "run.json"
     if run_path.exists():
         prior = json.loads(run_path.read_text())
@@ -351,6 +361,7 @@ def train_source_model(
         write_json(out / "geometry_reference.json", geometry_reference)
 
     configure_training_mode(model, model_id)
+    model.to(torch.device(cfg["device"]))
     behavior_state = ({k: v.detach().cpu() for k, v in model.behavior.state_dict().items()}
                       if hasattr(model, "behavior") and model_id in ADDITIVE_IDS else {})
     preview_rng = np.random.default_rng(derived_seed(master_seed, "classification_batches"))
@@ -391,6 +402,7 @@ def train_source_model(
         "feature_version": context.get("feature_version", "acie.features.extract.v1"),
         "source_snapshot_hash": context.get("source_snapshot_hash"),
         "resolved_config": cfg,
+        "positive_class_weight": positive_class_weight,
         "scaler_hash": scaler_hash,
         "geometry_checkpoint_hash": geometry_reference["sha256"] if geometry_reference else None,
         "behavior_init_hash": initial_state["behavior_state_sha256"],
@@ -407,7 +419,7 @@ def train_source_model(
         training_start = time.perf_counter()
         history, best_epoch, optimizer_steps, processed_examples = _fit(
             model, model_id, a, q, bundle.y, train_ix, val_ix, cfg,
-            master_seed, epochs, out, resume,
+            master_seed, epochs, out, resume, positive_class_weight,
         )
         training_seconds = time.perf_counter() - training_start
         if model_id == "F" and geometry_before is not None:
@@ -447,6 +459,7 @@ def train_source_model(
             "best_epoch": best_epoch,
             "source_val": val_metrics,
             "run_id": run_key,
+            "positive_class_weight": positive_class_weight,
         }
         torch.save(checkpoint, out / "best.pt")
         checkpoint_hash = digest_file(out / "best.pt")
