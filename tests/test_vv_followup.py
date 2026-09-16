@@ -29,7 +29,8 @@ from acie.vv_models import (
 )
 from acie.vv_trees import candidate_grid, score_locked_tree, train_source_tree, tree_features
 from acie.vv_horizon import fpr_budget_threshold, paired_date_seed_bootstrap
-from acie.vv_diagnostics import confidence_only_behavior, permute_behavior_within_partition_date
+from acie.vv_diagnostics import (confidence_only_behavior, permute_behavior_within_partition_date,
+                                 zero_explicit_velocity_behavior)
 
 
 @pytest.fixture(scope="module")
@@ -245,3 +246,6 @@ def test_vv_r5_behavior_transforms_obey_registered_contract(vv_dataset):
     original = bundle.q.reshape(*bundle.q.shape[:2], 17, 7)
     assert np.count_nonzero(shaped[..., [0, 1, 3, 4]]) == 0
     np.testing.assert_array_equal(shaped[..., [2, 5, 6]], original[..., [2, 5, 6]])
+    no_velocity = zero_explicit_velocity_behavior(bundle).q.reshape(*bundle.q.shape[:2], 17, 7)
+    assert np.count_nonzero(no_velocity[..., [3, 4, 6]]) == 0
+    np.testing.assert_array_equal(no_velocity[..., [0, 1, 2, 5]], original[..., [0, 1, 2, 5]])

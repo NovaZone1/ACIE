@@ -76,3 +76,20 @@ def confidence_only_behavior(bundle: Bundle) -> Bundle:
                          [dict(meta) for meta in bundle.meta], provenance)
     transformed.validate()
     return transformed
+
+
+def zero_explicit_velocity_behavior(bundle: Bundle) -> Bundle:
+    """Zero explicit velocity values/validity while retaining pose coordinates."""
+    q = bundle.q.copy().reshape(*bundle.q.shape[:2], 17, 7)
+    q[..., [3, 4, 6]] = 0.0
+    q = q.reshape(bundle.q.shape)
+    provenance = dict(bundle.provenance)
+    provenance["r5_transform"] = {
+        "kind": "explicit_velocity_zeroed", "kept_channels": [0, 1, 2, 5],
+        "zeroed_channels": [3, 4, 6],
+        "note": "temporal convolutions may still infer motion from coordinate sequences",
+    }
+    transformed = Bundle(bundle.a.copy(), q.astype(np.float32), bundle.y.copy(),
+                         [dict(meta) for meta in bundle.meta], provenance)
+    transformed.validate()
+    return transformed
