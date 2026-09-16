@@ -1,0 +1,18 @@
+{
+  "lr": 0.001,
+  "weight_decay": 0.0005,
+  "batch_size": 64,
+  "dropout": 0.1,
+  "patience": 10,
+  "gradient_clip": 5.0,
+  "geometry_epochs": 30,
+  "stage2_epochs": 50,
+  "single_stage_epochs": 80,
+  "device": "cpu",
+  "num_threads": 2,
+  "loss": "BCEWithLogitsLoss",
+  "class_weighted": false,
+  "pair_lambda": 0.0,
+  "epoch_selection": "strict source validation AP improvement; earlier epoch wins ties",
+  "threshold_selection": "source validation maximum F1"
+}

@@ -1,0 +1,220 @@
+{
+  "schema": "acie.vv-followup-protocol.v1",
+  "status": "locked_for_followup",
+  "locked_at": "2026-09-16",
+  "training_started_at_lock_creation": false,
+  "study_note": "Follow-up designed after historical target results were already known; not a new blind test.",
+  "feature_contract": {
+    "a_dim": 32,
+    "q_steps": 32,
+    "q_dim": 119,
+    "implementation": "acie.features.extract + SourceScaler"
+  },
+  "data": {
+    "path": "/home/ybw/论文一_ACIE_完整代码库/acie_hri/data/official_cross_domain.npz",
+    "npz_sha256": "8c4b37afbfef94a84d80a3b6b166582a67e30da64083bde578bea4234296070c",
+    "json_sha256": "ccac825800c0a08788754394d724405e47f67eff443c3d6b3e15219a055d8354",
+    "n": 12797,
+    "positives": 564
+  },
+  "directions": {
+    "HUI360_to_SSUP-A": {
+      "split_path": "/home/ybw/论文一_ACIE_完整代码库/acie_hri/outputs/frozen_cross_domain/HUI360_to_SSUP-A/split.json",
+      "split_sha256": "58af3e46988cde7892c3620cc7be00c83a4a9ecfa5adbf57939eb26362cb6eec",
+      "split_object_sha256": "c89ac068e120f061c091fe157c1e98b27dc61aa612b941b56b7843f86037ebfc",
+      "partitions": {
+        "train": {
+          "n": 1149,
+          "positives": 164,
+          "date_groups": 12,
+          "sample_ids_sha256": "4ddf2d8d3f853e1bc4755b1107e7c5056cb36a577bd99d8a3f06f1ee5539d8a9"
+        },
+        "val": {
+          "n": 268,
+          "positives": 49,
+          "date_groups": 3,
+          "sample_ids_sha256": "7ecac7a92b580489db6db4ff91b595e1e927bd94707a4c523203a9e1d392436b"
+        },
+        "test": {
+          "n": 4875,
+          "positives": 148,
+          "date_groups": 5,
+          "sample_ids_sha256": "acfd13912c592682285e61e16c2eb16d4fa16a6c366eed7caf3612ee88a86aa0"
+        }
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "split_path": "/home/ybw/论文一_ACIE_完整代码库/acie_hri/outputs/frozen_cross_domain/SSUP-A_to_HUI360/split.json",
+      "split_sha256": "5a3735c507f40696e3bfd2b6e37b53e84df4d7096abd2f3346e0a3d796712c68",
+      "split_object_sha256": "2e0a7ea70c5c94263ceb82f151ae27e84070b9f51af46f95e6741482a41a7258",
+      "partitions": {
+        "train": {
+          "n": 4896,
+          "positives": 105,
+          "date_groups": 4,
+          "sample_ids_sha256": "c5889bdcd206a8d9016f7488a613517cd0a45c166d477c10e2190ce9aaae8182"
+        },
+        "val": {
+          "n": 1202,
+          "positives": 30,
+          "date_groups": 1,
+          "sample_ids_sha256": "36cfd59a9129577f7297b3dc2a62d54d1434002838d7b5d300875f212b834264"
+        },
+        "test": {
+          "n": 407,
+          "positives": 68,
+          "date_groups": 9,
+          "sample_ids_sha256": "0a19c4d132965880dda0c6725c39ec4229a38dbcde6a5bf88d9d29ee48a81fca"
+        }
+      }
+    }
+  },
+  "models": {
+    "G": {
+      "model_id": "G",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": null,
+      "dropout": 0.1
+    },
+    "Q": {
+      "model_id": "Q",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": null,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    },
+    "C64": {
+      "model_id": "C64",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    },
+    "Cm": {
+      "model_id": "Cm",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 60,
+      "dropout": 0.1
+    },
+    "Jc": {
+      "model_id": "Jc",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    },
+    "Jw": {
+      "model_id": "Jw",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    },
+    "JwD": {
+      "model_id": "JwD",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    },
+    "F": {
+      "model_id": "F",
+      "a_dim": 32,
+      "q_dim": 119,
+      "geometry_hidden": 64,
+      "behavior_hidden": 64,
+      "dropout": 0.1
+    }
+  },
+  "effective_parameters": {
+    "G": 6337,
+    "Q": 35393,
+    "C64": 44641,
+    "Cm": 41589,
+    "Jc": 41730,
+    "Jw": 41730,
+    "JwD": 41730,
+    "F": 41730
+  },
+  "r1": {
+    "models": [
+      "G",
+      "Q",
+      "C64",
+      "Cm",
+      "Jc",
+      "Jw",
+      "JwD",
+      "F"
+    ],
+    "seeds": [
+      11,
+      22,
+      33,
+      44,
+      55
+    ],
+    "neural_slots": 80,
+    "primary_comparisons": [
+      "HUI360_to_SSUP-A:F-Jw",
+      "HUI360_to_SSUP-A:F-C64",
+      "SSUP-A_to_HUI360:F-Jw",
+      "SSUP-A_to_HUI360:F-C64"
+    ],
+    "config": {
+      "lr": 0.001,
+      "weight_decay": 0.0005,
+      "batch_size": 64,
+      "dropout": 0.1,
+      "patience": 10,
+      "gradient_clip": 5.0,
+      "geometry_epochs": 30,
+      "stage2_epochs": 50,
+      "single_stage_epochs": 80,
+      "device": "cpu",
+      "num_threads": 2,
+      "loss": "BCEWithLogitsLoss",
+      "class_weighted": false,
+      "pair_lambda": 0.0,
+      "epoch_selection": "strict source validation AP improvement; earlier epoch wins ties",
+      "threshold_selection": "source validation maximum F1"
+    }
+  },
+  "statistics": {
+    "primary_metric": "average_precision_score",
+    "single_model_summary": "five-seed arithmetic mean and sample SD (ddof=1)",
+    "paired_two_level_bootstrap_repeats": 10000,
+    "bootstrap_seed": 20260916,
+    "intervals": [
+      0.95,
+      0.9875
+    ]
+  },
+  "source_snapshot": {
+    "files": {
+      "src/acie/data.py": "eef5028262a4ddc7cbcd597cf672175b3b8743c8605b9efdbe2d19455d009c30",
+      "src/acie/features.py": "2ed778b967d55e5969e37bfbab52d6ef19ab524d1bd1b6e601c4d16c0ec3a087",
+      "src/acie/io.py": "f1559e6260c583dd68cc10335343b310333a2ffa6e56aff9ead0a12730d955ab",
+      "src/acie/metrics.py": "6468f3b8aa83a7cb0e62793e6ccea66c894b85421ef0afe9432a353ef08c8e83",
+      "src/acie/vv_models.py": "8fb3b6b32628cbb309728493c3f21bc0aefcf929d39a1c2e09a8bc42f7b17318",
+      "src/acie/vv_engine.py": "d9f290bb6afeff2ce42d2d42c97dbe52f464034c2560d64b28fea8a2259e582b",
+      "src/acie/vv_trees.py": "39fb4363b88abf4ef8c3f442270a40ba0e2fa0a4ade6344c0fe9cb4b4fdd5da5",
+      "scripts/vv_prepare_data.py": "586c0bb9eeb88133db464415ac07bd564de9f487a591de0394e15aa5c2fc13c1",
+      "scripts/vv_train_final.py": "ead821ed56dbc01632e6a2ae683d96c6228803770704b520ab4c2a1660e243a9",
+      "scripts/vv_score_locked.py": "3bf435ebe70133465b0426d334b584d426cf8c997720b814c97292646e223fcf",
+      "scripts/vv_train_trees.py": "015bf339e326639957638ded89fd7e61019bd884c5e7c19f17f2d6054a9cbafa",
+      "scripts/vv_score_trees_locked.py": "4e3b07f9dc91cbab3c8c2eba15e948c0245751be2a05e6f96e1e45bd1d13944f"
+    },
+    "sha256": "2ee625ffab2d56e0c72567b40fab346049c1d0267f233b702cd7590779c1ab2a"
+  },
+  "target_access": "No target prediction during training; separate vv_score_locked.py after full matrix lock."
+}

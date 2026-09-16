@@ -21,3 +21,7 @@ reports/server_official_baseline_setup_2026-09-14.md
 validation/server_04_setup_2026-09-14.json
 
 ARTIFACT_CHECKSUMS_SHA256.txt
+
+# Generated from private bundle metadata; contains derived sample identifiers
+protocols/vv_followup_v1/r2_folds/HUI360_to_SSUP-A/*.json
+protocols/vv_followup_v1/r2_folds/SSUP-A_to_HUI360/*.json

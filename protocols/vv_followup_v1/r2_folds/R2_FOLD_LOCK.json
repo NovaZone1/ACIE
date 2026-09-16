@@ -1,0 +1,121 @@
+{
+  "schema": "acie.vv-r2-fold-lock.v1",
+  "status": "locked_for_source_development",
+  "created_at": "2026-09-16",
+  "data_path": "/home/ybw/论文一_ACIE_完整代码库/acie_hri/data/official_cross_domain.npz",
+  "data_sha256": "8c4b37afbfef94a84d80a3b6b166582a67e30da64083bde578bea4234296070c",
+  "folds": {
+    "HUI360_to_SSUP-A": {
+      "A": {
+        "train_n": 810,
+        "train_positives": 103,
+        "val_n": 339,
+        "val_positives": 61,
+        "dates": [
+          "2025-07-10",
+          "2025-07-22",
+          "2025-07-29",
+          "2025-10-20"
+        ],
+        "split_object_sha256": "3b692f4975e017e04c1ffca575f5845050edf0b632ee5e5003e7fa7e51f95a57"
+      },
+      "B": {
+        "train_n": 726,
+        "train_positives": 112,
+        "val_n": 423,
+        "val_positives": 52,
+        "dates": [
+          "2025-07-11",
+          "2025-07-16",
+          "2025-07-24",
+          "2025-10-16"
+        ],
+        "split_object_sha256": "1e631a15e34fb7a2060ea715618b564c1a31cbdb429b68c17fe378a21a04cfaa"
+      },
+      "C": {
+        "train_n": 762,
+        "train_positives": 113,
+        "val_n": 387,
+        "val_positives": 51,
+        "dates": [
+          "2025-07-17",
+          "2025-07-18",
+          "2025-07-23",
+          "2025-10-15"
+        ],
+        "split_object_sha256": "5de1693dc4d3210df38ca226a16214299b72d779f8871082f6f14f0730cc42c0"
+      }
+    },
+    "SSUP-A_to_HUI360": {
+      "A": {
+        "train_n": 2974,
+        "train_positives": 68,
+        "val_n": 1922,
+        "val_positives": 37,
+        "dates": [
+          "2022-10-12"
+        ],
+        "split_object_sha256": "128a763eeeefa3def7430b1223879665741f03d1e1324b33781236346271c621"
+      },
+      "B": {
+        "train_n": 2953,
+        "train_positives": 65,
+        "val_n": 1943,
+        "val_positives": 40,
+        "dates": [
+          "2022-09-21",
+          "2022-09-28"
+        ],
+        "split_object_sha256": "cdea0dea7574bd0cf90285a1db9a0198c0570fed0f7e6df93afd1310ca04630e"
+      },
+      "C": {
+        "train_n": 3865,
+        "train_positives": 77,
+        "val_n": 1031,
+        "val_positives": 28,
+        "dates": [
+          "2022-10-06"
+        ],
+        "split_object_sha256": "ffd2adb70e12c9ab56ee2533b06937339d7e377cca64abbfc19c4ca43eb88274"
+      }
+    }
+  },
+  "grid": [
+    {
+      "order": 0,
+      "lr": 0.0003,
+      "weight_decay": 5e-05
+    },
+    {
+      "order": 1,
+      "lr": 0.0003,
+      "weight_decay": 0.0005
+    },
+    {
+      "order": 2,
+      "lr": 0.001,
+      "weight_decay": 5e-05
+    },
+    {
+      "order": 3,
+      "lr": 0.001,
+      "weight_decay": 0.0005
+    },
+    {
+      "order": 4,
+      "lr": 0.003,
+      "weight_decay": 5e-05
+    },
+    {
+      "order": 5,
+      "lr": 0.003,
+      "weight_decay": 0.0005
+    }
+  ],
+  "development_seeds": [
+    11,
+    22
+  ],
+  "selection": "unweighted mean AP over three folds and two seeds; differences <=1e-6 tie by candidate order",
+  "target_scoring": false
+}
