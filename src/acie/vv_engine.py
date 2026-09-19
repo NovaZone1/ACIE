@@ -26,6 +26,8 @@ from .vv_models import (
     effective_parameter_count,
     validate_parameter_count,
 )
+from .vv_provenance import (IDENTITY_VERSION, source_snapshot, training_content_digest,
+                            validate_complete_run)
 
 
 DEFAULT_CONFIG = {
@@ -311,9 +313,27 @@ def train_source_model(
 
     split_hash = digest_object(split)
     context = dict(context or {})
-    run_identity = {"model_id": model_id, "seed": master_seed, "config": cfg,
-                    "split_hash": split_hash, "provenance": bundle.provenance,
-                    "geometry_checkpoint": str(geometry_checkpoint) if geometry_checkpoint else None}
+    code_snapshot = source_snapshot()
+    training_hash = training_content_digest(bundle, indices)
+    geometry_checkpoint_hash = (digest_file(geometry_checkpoint)
+                                if geometry_checkpoint is not None else None)
+    context_identity = {
+        key: context.get(key) for key in (
+            "experiment", "split_id", "fold_id", "feature_version",
+            "data_hashes", "source_snapshot_hash", "selection_lock_hash",
+        ) if context.get(key) is not None
+    }
+    run_identity = {
+        "identity_version": IDENTITY_VERSION,
+        "model_id": model_id,
+        "seed": master_seed,
+        "config": cfg,
+        "split_hash": split_hash,
+        "training_content_hash": training_hash,
+        "code_snapshot_hash": code_snapshot["sha256"],
+        "geometry_checkpoint_hash": geometry_checkpoint_hash,
+        "context": context_identity,
+    }
     if positive_class_weight is not None:
         run_identity["positive_class_weight"] = float(positive_class_weight)
     run_key = digest_object(run_identity)
@@ -323,6 +343,7 @@ def train_source_model(
         if prior.get("run_id") != run_key:
             raise ValueError("Existing run directory has a different run identity")
         if prior.get("status") == "complete":
+            validate_complete_run(out, prior)
             return prior
         if not resume:
             raise FileExistsError("Incomplete run exists; use --resume or a new directory")
@@ -353,7 +374,7 @@ def train_source_model(
         geometry_before = {k: v.detach().cpu().clone() for k, v in model.geometry.state_dict().items()}
         geometry_reference = {
             "path": str(geometry_checkpoint.resolve()),
-            "sha256": digest_file(geometry_checkpoint),
+            "sha256": geometry_checkpoint_hash,
             "state_sha256": _tensor_state_digest(geometry_before),
             "split_hash": split_hash,
             "master_seed": master_seed,
@@ -386,6 +407,7 @@ def train_source_model(
     started = time.time()
     run = {
         "schema": "acie.vv-run.v1",
+        "identity_version": IDENTITY_VERSION,
         "run_id": run_key,
         "experiment": context.get("experiment", "unspecified"),
         "source": split["source"],
@@ -400,7 +422,10 @@ def train_source_model(
         "data_paths": context.get("data_paths", []),
         "data_hashes": context.get("data_hashes", []),
         "feature_version": context.get("feature_version", "acie.features.extract.v1"),
-        "source_snapshot_hash": context.get("source_snapshot_hash"),
+        "training_content_hash": training_hash,
+        "source_snapshot_hash": code_snapshot["sha256"],
+        "source_snapshot": code_snapshot,
+        "declared_source_snapshot_hash": context.get("source_snapshot_hash"),
         "resolved_config": cfg,
         "positive_class_weight": positive_class_weight,
         "scaler_hash": scaler_hash,
@@ -515,7 +540,8 @@ def score_locked_target(bundle: Bundle, checkpoint: str | Path, out: str | Path,
         rows.append({
             **bundle.meta[i], "label": int(bundle.y[i]), "score": float(score[position]),
             "logit": float(logit[position]), "model_id": model_id,
-            "seed": int(payload["master_seed"]), "split_id": "fixed",
+            "seed": int(payload["master_seed"]),
+            "split_id": payload["split"].get("split_id", "fixed"),
             "checkpoint_hash": checkpoint_hash, "source_threshold": float(payload["threshold"]),
             "geometry_logit": None if np.isnan(geometry[position]) else float(geometry[position]),
             "evidence_logit": None if np.isnan(evidence[position]) else float(evidence[position]),

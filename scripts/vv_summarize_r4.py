@@ -91,15 +91,19 @@ def main() -> None:
     parser.add_argument("--root", type=Path, default=root_default)
     parser.add_argument("--protocol", type=Path, default=Path("protocols/vv_followup_v1/R4_PROTOCOL_LOCK.json"))
     parser.add_argument("--out", type=Path, default=Path("outputs/vv_followup_v1/r4"))
+    parser.add_argument("--result-out", type=Path,
+                        help="Write revised summaries separately while reading predictions from --out")
     parser.add_argument("--bootstrap", type=int, default=10000)
     args = parser.parse_args()
     root = args.root.resolve()
     protocol_path = args.protocol if args.protocol.is_absolute() else root / args.protocol
     out = args.out if args.out.is_absolute() else root / args.out
+    result_out = (args.result_out if args.result_out and args.result_out.is_absolute() else
+                  root / args.result_out if args.result_out else out)
     protocol = read_json(protocol_path)
     verify_protocol(protocol)
     summary = {
-        "schema": "acie.vv-r4-summary.v1", "protocol_digest": protocol["protocol_digest"],
+        "schema": "acie.vv-r4-summary.v2", "protocol_digest": protocol["protocol_digest"],
         "bootstrap_repeats": args.bootstrap, "primary_set": "common_tracks", "directions": {},
     }
     metric_rows, difference_rows, date_rows = [], [], []
@@ -128,12 +132,17 @@ def main() -> None:
             "horizons": [],
         }
         for cutoff_index, cutoff in enumerate(sorted(ids_by_cutoff)):
-            horizon = {"cutoff_frames": cutoff, "cutoff_seconds": cutoff / protocol["fps"], "sets": {}}
-            positive_lead = [float(meta.get("cutoff_seconds", cutoff / protocol["fps"]))
-                             for meta, label in zip(bundles[cutoff].meta, bundles[cutoff].y) if int(label) == 1]
+            nominal_seconds = cutoff / protocol["fps"]
+            positive_meta = [meta for meta, label in zip(bundles[cutoff].meta, bundles[cutoff].y)
+                             if int(label) == 1]
+            if any(meta.get("event_lead_seconds") is None or
+                   not np.isfinite(float(meta["event_lead_seconds"])) for meta in positive_meta):
+                raise ValueError(f"Missing/non-finite actual event lead time: {direction}/{cutoff}")
+            positive_lead = [float(meta["event_lead_seconds"]) for meta in positive_meta]
+            horizon = {"cutoff_frames": cutoff, "nominal_cutoff_seconds": nominal_seconds, "sets": {}}
             horizon["complete_coverage"] = {
                 "n": len(ids_by_cutoff[cutoff]), "positives": int(bundles[cutoff].y.sum()),
-                "positive_event_lead_seconds": {"min": min(positive_lead), "median": float(np.median(positive_lead)), "max": max(positive_lead)},
+                "positive_event_lead_seconds_actual": {"min": min(positive_lead), "median": float(np.median(positive_lead)), "max": max(positive_lead)},
                 "negative_anchor_policy": bundles[cutoff].provenance.get("negative_alignment"),
             }
             matrices = {}
@@ -155,21 +164,30 @@ def main() -> None:
                         "AP_mean": result["AP_mean"], "AP_sample_SD": result["AP_sample_SD"],
                         "AUROC_mean": result["AUROC_mean"], "AUROC_sample_SD": result["AUROC_sample_SD"],
                     })
-                horizon["sets"][set_name] = {"n": len(labels), "positives": int(labels.sum()), "methods": methods}
+                set_positive_lead = [float(meta_by_cutoff[cutoff][sample_id]["event_lead_seconds"])
+                                     for sample_id in ids if int(base_predictions[sample_id]["label"]) == 1]
+                horizon["sets"][set_name] = {
+                    "n": len(labels), "positives": int(labels.sum()), "methods": methods,
+                    "positive_event_lead_seconds_actual": {
+                        "min": min(set_positive_lead), "median": float(np.median(set_positive_lead)),
+                        "max": max(set_positive_lead),
+                    } if set_positive_lead else None,
+                }
                 if set_name == "common_tracks":
                     groups = np.asarray([str(row.get("group_id", row["recording"])) for row in metadata])
                     for opponent in ("G", spec["J_star"], spec["C_star"]):
                         f_scores, other = matrices[set_name]["F"], matrices[set_name][opponent]
                         seed_differences = [float(average_precision_score(labels, f_scores[i]) -
                                                   average_precision_score(labels, other[i])) for i in range(5)]
+                        bootstrap_seed = 20260916 + direction_index * 100 + cutoff_index
                         boot = paired_date_seed_bootstrap(
                             labels, groups, f_scores, other, args.bootstrap,
-                            20260916 + direction_index * 100 + cutoff_index)
+                            bootstrap_seed)
                         comparison = {
                             "comparison": f"F-{opponent}", "seed_AP_differences": seed_differences,
                             "mean_AP_difference": float(np.mean(seed_differences)),
                             "positive_seeds": int(np.sum(np.asarray(seed_differences) > 0)),
-                            "bootstrap": boot,
+                            "bootstrap_seed": bootstrap_seed, "bootstrap": boot,
                         }
                         horizon["sets"][set_name].setdefault("comparisons", []).append(comparison)
                         interval = boot["joint_date_and_seed"]["interval_95"]
@@ -197,19 +215,20 @@ def main() -> None:
                             })
             direction_result["horizons"].append(horizon)
         summary["directions"][direction] = direction_result
-    write_json(out / "r4_summary.json", summary)
-    write_csv(out / "r4_metrics.csv", metric_rows)
-    write_csv(out / "r4_common_differences.csv", difference_rows)
-    write_csv(out / "r4_date_diagnostics.csv", date_rows)
+    result_out.mkdir(parents=True, exist_ok=True)
+    write_json(result_out / "r4_summary.json", summary)
+    write_csv(result_out / "r4_metrics.csv", metric_rows)
+    write_csv(result_out / "r4_common_differences.csv", difference_rows)
+    write_csv(result_out / "r4_date_diagnostics.csv", date_rows)
     lines = ["# R4 horizon and operating-point results", "",
              "Primary comparisons use tracks available at all five horizons.", "",
              "| Direction | Frames | Comparison | Mean AP difference | Positive seeds | 95% interval |",
              "|---|---:|---:|---:|---:|---:|"]
     for row in difference_rows:
         lines.append(f"| {row['direction']} | {row['cutoff_frames']} | {row['comparison']} | {row['mean_AP_difference']:.6f} | {row['positive_seeds']}/5 | [{row['interval_95_low']:.6f}, {row['interval_95_high']:.6f}] |")
-    (out / "R4_SUMMARY.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (result_out / "R4_SUMMARY.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(json.dumps({"status": "complete", "metric_rows": len(metric_rows),
-                      "comparisons": len(difference_rows), "summary": str(out / "r4_summary.json")}, indent=2))
+                      "comparisons": len(difference_rows), "summary": str(result_out / "r4_summary.json")}, indent=2))
 
 
 if __name__ == "__main__":

@@ -15,11 +15,23 @@ from .data import Bundle, resolve_split
 from .features import SourceScaler
 from .io import digest_file, digest_object, environment, write_json, write_jsonl
 from .metrics import binary_metrics, choose_threshold
+from .vv_provenance import (IDENTITY_VERSION, source_snapshot, training_content_digest,
+                            validate_complete_run)
 
 
-def tree_features(scaler: SourceScaler, a: np.ndarray, q: np.ndarray) -> np.ndarray:
+def tree_features(scaler: SourceScaler, a: np.ndarray, q: np.ndarray,
+                  feature_set: str = "all") -> np.ndarray:
     aa, qq = scaler.transform(a, q)
-    return np.concatenate([aa, qq[:, -1], qq.mean(1), qq.std(1)], axis=1).astype(np.float32)
+    pose = np.concatenate([qq[:, -1], qq.mean(1), qq.std(1)], axis=1)
+    if feature_set == "geometry":
+        result = aa
+    elif feature_set == "pose":
+        result = pose
+    elif feature_set == "all":
+        result = np.concatenate([aa, pose], axis=1)
+    else:
+        raise ValueError(f"Unknown tree feature set: {feature_set}")
+    return result.astype(np.float32)
 
 
 def candidate_grid(kind: str, protocol: str = "r1") -> list[dict[str, Any]]:
@@ -50,32 +62,56 @@ def _build(kind: str, params: dict[str, Any], seed: int):
 
 def train_source_tree(bundle: Bundle, split: dict[str, Any], out: str | Path,
                       kind: str = "histgb", seed: int = 11, protocol: str = "r1",
-                      context: dict[str, Any] | None = None) -> dict[str, Any]:
+                      context: dict[str, Any] | None = None,
+                      feature_set: str = "all") -> dict[str, Any]:
     """Fit/select on source train/val. No target prediction is produced."""
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
-    if (out / "tree.joblib").exists():
-        prior = json.loads((out / "run.json").read_text())
-        if prior.get("status") == "complete":
-            return prior
-        raise FileExistsError(f"Incomplete tree run exists at {out}")
     context = context or {}
     indices = resolve_split(bundle, split)
     train_ix, val_ix = indices["train"], indices["val"]
+    snapshot = source_snapshot()
+    content_hash = training_content_digest(bundle, indices)
+    grid = candidate_grid(kind, protocol)
+    run_identity = {
+        "identity_version": IDENTITY_VERSION,
+        "kind": kind,
+        "seed": seed,
+        "protocol": protocol,
+        "feature_set": feature_set,
+        "split_hash": digest_object(split),
+        "grid": grid,
+        "training_content_hash": content_hash,
+        "code_snapshot_hash": snapshot["sha256"],
+        "context": {key: context.get(key) for key in
+                    ("experiment", "split_id", "fold_id", "data_hashes", "selection_lock_hash")
+                    if context.get(key) is not None},
+    }
+    run_id = digest_object(run_identity)
+    if (out / "run.json").exists():
+        prior = json.loads((out / "run.json").read_text())
+        if prior.get("run_id") != run_id:
+            raise ValueError("Existing tree run directory has a different run identity")
+        if prior.get("status") == "complete":
+            validate_complete_run(out, prior, tree=True)
+            return prior
+        raise FileExistsError(f"Incomplete tree run exists at {out}")
     scaler = SourceScaler.fit(bundle.a[train_ix], bundle.q[train_ix])
     write_json(out / "scaler.json", scaler.to_dict())
-    x = tree_features(scaler, bundle.a, bundle.q)
-    if x.shape[1] != 389:
-        raise AssertionError(f"Expected 389 tree features, got {x.shape[1]}")
-    grid = candidate_grid(kind, protocol)
-    run_id = digest_object({"kind": kind, "seed": seed, "protocol": protocol,
-                            "split": split, "grid": grid, "provenance": bundle.provenance})
+    x = tree_features(scaler, bundle.a, bundle.q, feature_set)
+    expected_dim = {"geometry": 32, "pose": 357, "all": 389}[feature_set]
+    if x.shape[1] != expected_dim:
+        raise AssertionError(f"Expected {expected_dim} tree features, got {x.shape[1]}")
     run = {
-        "schema": "acie.vv-tree-run.v1", "run_id": run_id,
+        "schema": "acie.vv-tree-run.v1", "identity_version": IDENTITY_VERSION,
+        "run_id": run_id,
         "experiment": context.get("experiment", protocol), "source": split["source"],
         "target": split["target"], "model_id": kind, "seed": seed,
         "stage": "source_training_and_selection", "split_hash": digest_object(split),
-        "feature_dim": 389, "candidate_count": len(grid), "grid": grid,
+        "feature_set": feature_set, "feature_dim": expected_dim,
+        "candidate_count": len(grid), "grid": grid,
+        "training_content_hash": content_hash,
+        "source_snapshot_hash": snapshot["sha256"], "source_snapshot": snapshot,
         "target_scoring_performed": False, "status": "started", "environment": environment(),
     }
     write_json(out / "run.json", run)
@@ -96,7 +132,7 @@ def train_source_tree(bundle: Bundle, split: dict[str, Any], out: str | Path,
         "schema": "acie.vv-tree-checkpoint.v1", "kind": kind, "seed": seed,
         "protocol": protocol, "model": selected["model"], "scaler": scaler.to_dict(),
         "split": split, "threshold": threshold, "selected_params": selected["params"],
-        "run_id": run_id,
+        "run_id": run_id, "feature_set": feature_set, "feature_dim": expected_dim,
     }
     joblib.dump(payload, out / "tree.joblib")
     checkpoint_hash = digest_file(out / "tree.joblib")
@@ -127,13 +163,15 @@ def score_locked_tree(bundle: Bundle, checkpoint: str | Path, out: str | Path) -
         raise ValueError("Unsupported VV tree checkpoint")
     indices = resolve_split(bundle, payload["split"])["test"]
     scaler = SourceScaler.from_dict(payload["scaler"])
-    x = tree_features(scaler, bundle.a, bundle.q)
+    feature_set = payload.get("feature_set", "all")
+    x = tree_features(scaler, bundle.a, bundle.q, feature_set)
     started = time.perf_counter()
     score = payload["model"].predict_proba(x[indices])[:, 1]
     seconds = time.perf_counter() - started
     checkpoint_hash = digest_file(checkpoint)
     rows = [{**bundle.meta[i], "label": int(bundle.y[i]), "score": float(value),
-             "model_id": payload["kind"], "seed": int(payload["seed"]), "split_id": "fixed",
+             "model_id": payload["kind"], "seed": int(payload["seed"]),
+             "split_id": payload["split"].get("split_id", "fixed"),
              "checkpoint_hash": checkpoint_hash, "source_threshold": float(payload["threshold"]),
              "geometry_logit": None, "evidence_logit": None}
             for i, value in zip(indices, score)]
@@ -141,6 +179,7 @@ def score_locked_tree(bundle: Bundle, checkpoint: str | Path, out: str | Path) -
     write_jsonl(out, rows)
     result = {"schema": "acie.vv-tree-locked-score.v1", "kind": payload["kind"],
               "seed": int(payload["seed"]), "checkpoint_hash": checkpoint_hash,
+              "feature_set": feature_set, "feature_dim": int(x.shape[1]),
               "weights_updated": False, "scaler_updated": False, "threshold_updated": False,
               "metrics": binary_metrics(bundle.y[indices], score, payload["threshold"]),
               "inference_seconds": seconds}

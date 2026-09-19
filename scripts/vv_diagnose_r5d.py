@@ -15,7 +15,7 @@ from sklearn.neighbors import NearestNeighbors
 
 from acie.data import Bundle, resolve_split, track_key
 from acie.features import SourceScaler
-from acie.io import read_json, read_jsonl, write_json
+from acie.io import read_json, read_jsonl, write_json, write_jsonl
 from acie.matching import MatchConfig, accuracy, fit_radius, match
 
 DIRECTIONS = {
@@ -33,6 +33,18 @@ def prediction_matrix(base: Path, direction: str, model: str, seeds: tuple[int, 
     if any([row["sample_id"] for row in rows] != expected_ids for rows in loaded):
         raise ValueError(f"R5d prediction coverage differs: {direction}/{model}")
     return np.asarray([[row["score"] for row in rows] for rows in loaded]), loaded
+
+
+def additive_component_matrices(rows_by_seed: list[list[dict]], model: str) -> dict[str, np.ndarray]:
+    """Return g, r, and z for additive models; reject incomplete component records."""
+    result = {}
+    for name, field in (("g", "geometry_logit"), ("r", "evidence_logit"), ("g_plus_r", "logit")):
+        if any(row.get(field) is None for rows in rows_by_seed for row in rows):
+            raise ValueError(f"Missing {field} for additive diagnostic: {model}")
+        result[name] = np.asarray([[float(row[field]) for row in rows] for rows in rows_by_seed])
+    if not np.allclose(result["g"] + result["r"], result["g_plus_r"], rtol=0, atol=1e-5):
+        raise ValueError(f"Additive decomposition mismatch: {model}")
+    return result
 
 
 def pair_outcomes(scores: np.ndarray, pairs) -> np.ndarray:
@@ -121,6 +133,7 @@ def main() -> None:
     data_path, r2, selection, out = map(resolve, (args.data, args.r2, args.selection, args.out))
     bundle = Bundle.load(data_path)
     results, method_rows, comparison_rows, subgroups = {}, [], [], []
+    component_rows, pair_records = [], []
     for direction_index, (direction, split_relative) in enumerate(DIRECTIONS.items()):
         split = read_json(root / split_relative)
         indices = resolve_split(bundle, split)
@@ -138,6 +151,18 @@ def main() -> None:
                                  MatchConfig(context_policy="same_group"))
         same_pairs = match(standardized_a[test_ix], bundle.y[test_ix], test_meta,
                            same_config, seed=20260916)
+        for pair_name, pairs in (("global", global_pairs), ("same_date", same_pairs)):
+            for pair_index, (positive, negative, weight, distance) in enumerate(
+                    zip(pairs.positive, pairs.negative, pairs.weight, pairs.distance)):
+                positive_meta, negative_meta = test_meta[int(positive)], test_meta[int(negative)]
+                pair_records.append({
+                    "direction": direction, "pair_set": pair_name, "pair_index": pair_index,
+                    "positive_sample_id": positive_meta["sample_id"],
+                    "negative_sample_id": negative_meta["sample_id"],
+                    "positive_group": str(positive_meta.get("group_id", positive_meta["recording"])),
+                    "negative_group": str(negative_meta.get("group_id", negative_meta["recording"])),
+                    "weight": float(weight), "geometry_distance": float(distance),
+                })
         expected_ids = [bundle.meta[i]["sample_id"] for i in test_ix]
         scores, prediction_rows = {}, {}
         model_seeds = {**{model: SEEDS for model in NEURAL}, "histgb": (11,), "random_forest": SEEDS}
@@ -150,6 +175,25 @@ def main() -> None:
                                     "pair_accuracy_mean": float(outcomes.mean(1).mean()),
                                     "pair_accuracy_sample_SD": (float(outcomes.mean(1).std(ddof=1))
                                                                 if len(seeds) > 1 else None)})
+            if model in ("F", "Jw", "JwD", "Jc"):
+                components = additive_component_matrices(prediction_rows[model], model)
+                for pair_name, pairs in (("global", global_pairs), ("same_date", same_pairs)):
+                    for component, values in components.items():
+                        outcomes = pair_outcomes(values, pairs)
+                        per_seed = outcomes.mean(1)
+                        weighted = np.asarray([
+                            np.average(seed_outcomes, weights=pairs.weight)
+                            for seed_outcomes in outcomes
+                        ]) if len(pairs) else np.asarray([])
+                        component_rows.append({
+                            "direction": direction, "pair_set": pair_name, "model": model,
+                            "component": component, "seeds": len(seeds), "pair_count": len(pairs),
+                            "pair_accuracy_mean": float(per_seed.mean()) if len(per_seed) else None,
+                            "pair_accuracy_sample_SD": (float(per_seed.std(ddof=1))
+                                                        if len(per_seed) > 1 else None),
+                            "weighted_pair_accuracy_mean": (float(weighted.mean())
+                                                            if len(weighted) else None),
+                        })
         selected = read_json(selection / direction / "MODEL_SELECTION_LOCK.json")
         opponents = ("G", selected["J_star"], selected["C_star"])
         pair_groups = np.asarray([str(test_meta[i].get("group_id", test_meta[i]["recording"]))
@@ -204,15 +248,20 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
     payload = {"schema": "acie.vv-r5d-support-diagnostic.v1", "directions": results,
                "method_pair_accuracy": method_rows, "comparisons": comparison_rows,
-               "subgroups": subgroups, "target_labels_used_for_offline_diagnostic": True}
+               "additive_component_pair_accuracy": component_rows,
+               "pair_records_file": "r5d_pairs.jsonl", "subgroups": subgroups,
+               "target_labels_used_for_offline_diagnostic": True}
     write_json(out / "r5d_summary.json", payload)
+    write_jsonl(out / "r5d_pairs.jsonl", pair_records)
     for name, rows in (("r5d_method_pair_accuracy.csv", method_rows),
                        ("r5d_comparisons.csv", [{**row, "bootstrap": json.dumps(row.get("bootstrap"))} for row in comparison_rows]),
+                       ("r5d_additive_components.csv", component_rows),
                        ("r5d_subgroups.csv", subgroups)):
         with (out / name).open("w", newline="", encoding="utf-8") as handle:
             writer = csv.DictWriter(handle, fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
     print(json.dumps({"status": "complete", "methods": len(method_rows),
-                      "comparisons": len(comparison_rows), "subgroups": len(subgroups)}, indent=2))
+                      "comparisons": len(comparison_rows), "components": len(component_rows),
+                      "pairs": len(pair_records), "subgroups": len(subgroups)}, indent=2))
 
 
 if __name__ == "__main__":

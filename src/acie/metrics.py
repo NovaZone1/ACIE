@@ -8,12 +8,14 @@ def binary_metrics(y,s,threshold=.5)->dict:
     if len(y)==0 or len(y)!=len(s) or not np.isfinite(s).all():raise ValueError('Invalid prediction arrays')
     positives=int(y.sum());negatives=int(len(y)-positives)
     pred=s>=threshold;tp=int(np.sum(pred&(y==1)));fp=int(np.sum(pred&(y==0)))
+    fn=int(np.sum((~pred)&(y==1)));tn=int(np.sum((~pred)&(y==0)))
     return {'n':len(y),'positives':positives,'prevalence':positives/len(y),
             'AP':float(average_precision_score(y,s)) if positives else None,
             'AUROC':float(roc_auc_score(y,s)) if positives and negatives else None,
             'threshold':float(threshold),'recall':tp/positives if positives else None,
             'false_positive_rate':fp/negatives if negatives else None,
-            'precision':tp/(tp+fp) if tp+fp else 0.}
+            'precision':tp/(tp+fp) if tp+fp else 0.,
+            'TP':tp,'FP':fp,'FN':fn,'TN':tn}
 
 
 def choose_threshold(y,s)->float:

@@ -188,3 +188,47 @@ PYTHONPATH=src .venv/bin/python scripts/validate_horizon_evaluation.py \
 ## 停止判据
 
 首先核实匹配支持和原生简单模型。缺少可比正负例时，不应靠挑选可视化例子继续主张；随机同计数配对、重采样或融合 MLP 已解释全部提升时，应删除对应方法贡献。讨论只限公开数据行为预测，不外推真实机器人安全和人的内部心理状态。
+
+## 2026-09-19 方法论文补证与归档
+
+这一轮修复运行身份和结果复用校验后，在独立的 `outputs/vv_followup_v2/` 中完成补证。目标评分要求已有评分锁和匹配的检查点哈希；完整运行只有在源数据内容、代码快照、配置、划分、几何检查点和必需产物均一致时才可复用。
+
+无需重训的统一证据包由已有锁定预测生成：
+
+```bash
+PYTHONPATH=src python scripts/vv_finalize_evidence.py \
+  --out outputs/vv_followup_v2/evidence --bootstrap 10000
+```
+
+它生成 R1 辅助比较、R2 神经与树模型配对比较、目标日期逐一留出、固定源域阈值的 AUROC/Recall/FPR/TP/FP/FN/TN，以及末帧框面积排序基线。面积分数方向只由源域决定。R3、R4、R5d 分别用 `vv_summarize_r3.py`、`vv_summarize_r4.py`/`vv_validate_r4.py` 和 `vv_diagnose_r5d.py` 导出逐种子、实际时间/输入等价性及 `g/r/g+r` 配对记录。
+
+树模型输入消融对 HistGB 和 RF 分别执行同一套锁定阶段：
+
+```bash
+for KIND in histgb random_forest; do
+  if [ "$KIND" = histgb ]; then OUT=outputs/vv_followup_v2/tree_input_ablation; else OUT=outputs/vv_followup_v2/rf_input_ablation; fi
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py prepare --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py cv --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py select --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py final --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py validate --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py score --kind "$KIND" --out "$OUT"
+  PYTHONPATH=src python scripts/vv_tree_input_ablation.py summarize --kind "$KIND" --out "$OUT" --bootstrap 10000
+done
+```
+
+实际归档目录名为 `tree_input_ablation`（HistGB）和 `rf_input_ablation`（RF）。每种输入均在源域日期 CV 中独立选择参数，再锁定目标评分。原 R2 树模型 CV 的 108 个训练槽用以下入口完整复算并验证其选择与旧锁一致：
+
+```bash
+PYTHONPATH=src python scripts/vv_archive_r2_tree_cv.py prepare --out outputs/vv_followup_v2/r2_tree_cv_archive
+PYTHONPATH=src python scripts/vv_archive_r2_tree_cv.py run --out outputs/vv_followup_v2/r2_tree_cv_archive
+PYTHONPATH=src python scripts/vv_archive_r2_tree_cv.py validate --out outputs/vv_followup_v2/r2_tree_cv_archive
+```
+
+所有测试和验证通过后生成总审计：
+
+```bash
+PYTHONPATH=src python scripts/vv_completion_audit.py --tests-passed 62
+```
+
+本轮没有把 R5 重训为 R2 配置。R5 明确保留为 R1 固定配置诊断，不与 R2 主消融混写。当前最小证据计划没有剩余必做实验；若扩大到普遍跨域规律、部署或配对机制主张，才需要另立协议补充证据。

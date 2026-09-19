@@ -174,11 +174,56 @@ def test_vv_training_and_target_scoring_are_decoupled(vv_dataset, tmp_path):
     assert all(torch.equal(before[key], after[key]) for key in before)
 
 
+def test_vv_complete_run_rejects_changed_source_content(vv_dataset, tmp_path):
+    bundle, split, _ = vv_dataset
+    run_dir = tmp_path / "content_bound"
+    config = {"geometry_epochs": 1, "stage2_epochs": 1, "single_stage_epochs": 1,
+              "patience": 2, "num_threads": 1, "device": "cpu"}
+    train_source_model(bundle, split, "G", 11, run_dir, config)
+    altered = Bundle(bundle.a.copy(), bundle.q.copy(), bundle.y.copy(), copy.deepcopy(bundle.meta),
+                     copy.deepcopy(bundle.provenance))
+    source_index = resolve_split(altered, split)["train"][0]
+    altered.a[source_index, 0] += 1.0
+    with pytest.raises(ValueError, match="different run identity"):
+        train_source_model(altered, split, "G", 11, run_dir, config)
+
+
+def test_vv_complete_run_rejects_changed_geometry_dependency(vv_dataset, tmp_path):
+    bundle, split, _ = vv_dataset
+    config = {"geometry_epochs": 1, "stage2_epochs": 1, "single_stage_epochs": 1,
+              "patience": 2, "num_threads": 1, "device": "cpu"}
+    geometry_dir = tmp_path / "geometry_dependency"
+    train_source_model(bundle, split, "G", 22, geometry_dir, config)
+    geometry = geometry_dir / "best.pt"
+    residual_dir = tmp_path / "residual_dependency"
+    train_source_model(bundle, split, "F", 22, residual_dir, config, geometry)
+    payload = torch.load(geometry, map_location="cpu", weights_only=True)
+    key = next(iter(payload["state"]))
+    payload["state"][key] = payload["state"][key].clone()
+    payload["state"][key].view(-1)[0] += 0.01
+    torch.save(payload, geometry)
+    with pytest.raises(ValueError, match="different run identity"):
+        train_source_model(bundle, split, "F", 22, residual_dir, config, geometry)
+
+
+def test_vv_complete_run_rejects_missing_artifact(vv_dataset, tmp_path):
+    bundle, split, _ = vv_dataset
+    run_dir = tmp_path / "missing_artifact"
+    config = {"geometry_epochs": 1, "stage2_epochs": 1, "single_stage_epochs": 1,
+              "patience": 2, "num_threads": 1, "device": "cpu"}
+    train_source_model(bundle, split, "Q", 33, run_dir, config)
+    (run_dir / "metrics.json").unlink()
+    with pytest.raises(ValueError, match="missing required artifacts"):
+        train_source_model(bundle, split, "Q", 33, run_dir, config)
+
+
 def test_vv_tree_grid_and_feature_contract(vv_dataset):
     bundle, split, _ = vv_dataset
     train_ix = resolve_split(bundle, split)["train"]
     scaler = SourceScaler.fit(bundle.a[train_ix], bundle.q[train_ix])
-    assert tree_features(scaler, bundle.a, bundle.q).shape[1] == 389
+    assert tree_features(scaler, bundle.a, bundle.q, "geometry").shape[1] == 32
+    assert tree_features(scaler, bundle.a, bundle.q, "pose").shape[1] == 357
+    assert tree_features(scaler, bundle.a, bundle.q, "all").shape[1] == 389
     assert len(candidate_grid("histgb", "r1")) == 3
     assert len(candidate_grid("random_forest", "r1")) == 3
     assert len(candidate_grid("histgb", "r2")) == 6

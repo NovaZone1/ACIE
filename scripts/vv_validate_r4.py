@@ -6,7 +6,10 @@ import argparse
 import json
 from pathlib import Path
 
-from acie.data import Bundle
+import numpy as np
+import torch
+
+from acie.data import Bundle, resolve_split
 from acie.io import digest_file, read_json, read_jsonl, write_json
 from vv_score_r4 import prediction_path, verify_protocol
 
@@ -26,16 +29,22 @@ def main() -> None:
     parser.add_argument("--protocol", type=Path, default=Path("protocols/vv_followup_v1/R4_PROTOCOL_LOCK.json"))
     parser.add_argument("--out", type=Path, default=Path("outputs/vv_followup_v1/r4"))
     parser.add_argument("--r2", type=Path, default=Path("outputs/vv_followup_v1/r2_final"))
+    parser.add_argument("--data", type=Path, default=Path("data/official_cross_domain.npz"))
+    parser.add_argument("--report-out", type=Path,
+                        help="Read predictions from --out and write revised validation separately")
     args = parser.parse_args()
     root = args.root.resolve()
     resolve = lambda value: value if value.is_absolute() else root / value
-    protocol_path, out, r2 = map(resolve, (args.protocol, args.out, args.r2))
+    protocol_path, out, r2, data_path = map(resolve, (args.protocol, args.out, args.r2, args.data))
+    report_out = resolve(args.report_out) if args.report_out else out
     protocol = read_json(protocol_path)
     verify_protocol(protocol)
-    errors, base_replay = [], []
+    base_bundle = Bundle.load(data_path)
+    errors, base_replay, base_input_equivalence = [], [], []
     prediction_files = 0
     for direction, spec in protocol["directions"].items():
         horizon_sets = []
+        base_checked = False
         for bundle_spec in spec["bundles"]:
             cutoff = int(bundle_spec["cutoff_frames"])
             bundle_path = root / bundle_spec["path"]
@@ -48,6 +57,27 @@ def main() -> None:
             horizon_sets.append(set(expected_ids))
             if len(expected_ids) != bundle_spec["n"] or int(bundle.y.sum()) != bundle_spec["positives"]:
                 errors.append(f"bundle counts mismatch {direction}/{cutoff}")
+            if cutoff == 16 and not base_checked:
+                reference_spec = spec["checkpoints"]["G"]["11"]
+                reference = torch.load(root / reference_spec["path"], map_location="cpu", weights_only=True)
+                base_indices = resolve_split(base_bundle, reference["split"])["test"]
+                base_lookup = {base_bundle.meta[int(i)]["sample_id"]: int(i) for i in base_indices}
+                if set(base_lookup) != set(expected_ids):
+                    errors.append(f"base bundle IDs differ from 16-frame bundle: {direction}")
+                else:
+                    positions = np.asarray([base_lookup[sample_id] for sample_id in expected_ids], dtype=int)
+                    a_diff = float(np.max(np.abs(base_bundle.a[positions] - bundle.a)))
+                    q_diff = float(np.max(np.abs(base_bundle.q[positions] - bundle.q)))
+                    labels_equal = bool(np.array_equal(base_bundle.y[positions], bundle.y))
+                    if a_diff != 0.0 or q_diff != 0.0 or not labels_equal:
+                        errors.append(f"base input mismatch {direction}: a={a_diff}, q={q_diff}, y={labels_equal}")
+                    base_input_equivalence.append({
+                        "direction": direction, "sample_count": len(expected_ids),
+                        "a_max_abs_difference": a_diff, "q_max_abs_difference": q_diff,
+                        "labels_equal": labels_equal, "base_bundle_sha256": digest_file(data_path),
+                        "horizon_bundle_sha256": bundle_spec["sha256"],
+                    })
+                base_checked = True
             for model in spec["models"]:
                 for seed_text, checkpoint_spec in spec["checkpoints"][model].items():
                     seed = int(seed_text)
@@ -91,7 +121,7 @@ def main() -> None:
             errors.append(f"horizon coverage is not nested: {direction}")
     if prediction_files != 210:
         errors.append(f"expected 210 prediction files, observed {prediction_files}")
-    summary_path = out / "r4_summary.json"
+    summary_path = report_out / "r4_summary.json"
     if not summary_path.is_file():
         errors.append("missing r4_summary.json")
     else:
@@ -106,11 +136,13 @@ def main() -> None:
                 if set(methods) != set(protocol["directions"][direction]["models"]):
                     errors.append(f"summary method set mismatch {direction}/{horizon.get('cutoff_frames')}")
     report = {
-        "schema": "acie.vv-r4-validation.v1", "status": "passed" if not errors else "failed",
+        "schema": "acie.vv-r4-validation.v2", "status": "passed" if not errors else "failed",
         "prediction_files": prediction_files, "expected_prediction_files": 210,
-        "base_replay_checks": len(base_replay), "base_replay": base_replay, "errors": errors,
+        "base_prediction_reuse_checks": len(base_replay), "base_prediction_reuse": base_replay,
+        "base_input_equivalence": base_input_equivalence, "errors": errors,
     }
-    write_json(out / "r4_validation.json", report)
+    report_out.mkdir(parents=True, exist_ok=True)
+    write_json(report_out / "r4_validation.json", report)
     print(json.dumps(report, indent=2))
     if errors:
         raise SystemExit(1)
